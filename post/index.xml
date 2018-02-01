@@ -17,7 +17,10 @@
       <pubDate>Thu, 01 Feb 2018 00:00:00 +0000</pubDate>
       
       <guid>/post/hola/</guid>
-      <description>esto es una prueba</description>
+      <description>esto es una prueba
+mathjax debería functionar (y los acentos también)
+$$a+b$$
+$$\int_a^b f(t)dt$$</description>
     </item>
     
   </channel>

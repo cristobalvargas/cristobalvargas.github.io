@@ -494,6 +494,12 @@
   <div id="content">
     <p>esto es una prueba</p>
 
+<p>mathjax debería functionar (y los acentos también)</p>
+
+<p>$$a+b$$</p>
+
+<p>$$\int_a^b f(t)dt$$</p>
+
   </div>
 
   <footer>
@@ -1177,6 +1183,16 @@
       <script src="/js/util.js"></script>
       <script src="/js/main.js"></script>
       <script src="/js/backToTop.js"></script>
+      <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+          }
+        });
+      </script>
+      <script type="text/javascript"
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+      </script>
     
 
     

@@ -23,11 +23,17 @@
 
         <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="hola"/>
-<meta name="twitter:description" content="esto es una prueba"/>
+<meta name="twitter:description" content="esto es una prueba
+mathjax debería functionar (y los acentos también)
+$$a&#43;b$$
+$$\int_a^b f(t)dt$$"/>
 <meta name="twitter:site" content="@example"/>
 
         <meta property="og:title" content="hola" />
-<meta property="og:description" content="esto es una prueba" />
+<meta property="og:description" content="esto es una prueba
+mathjax debería functionar (y los acentos también)
+$$a&#43;b$$
+$$\int_a^b f(t)dt$$" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="/post/hola/" />
 
@@ -49,12 +55,15 @@
 
         
 <meta itemprop="name" content="hola">
-<meta itemprop="description" content="esto es una prueba">
+<meta itemprop="description" content="esto es una prueba
+mathjax debería functionar (y los acentos también)
+$$a&#43;b$$
+$$\int_a^b f(t)dt$$">
 
 
 <meta itemprop="datePublished" content="2018-02-01T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-02-01T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="4">
+<meta itemprop="wordCount" content="14">
 
 
 
@@ -289,7 +298,7 @@
         
 
         <a href="/blog/creating-a-new-theme/" class="image featured">
-            <img src="/img/2014/09/pic03.jpg" alt="">
+            <img src="/img//pic03.jpg" alt="">
         </a>
     
 
@@ -582,6 +591,12 @@
 
   <div id="content">
     <p>esto es una prueba</p>
+
+<p>mathjax debería functionar (y los acentos también)</p>
+
+<p>$$a+b$$</p>
+
+<p>$$\int_a^b f(t)dt$$</p>
 
   </div>
 
@@ -1188,6 +1203,16 @@
       <script src="/js/util.js"></script>
       <script src="/js/main.js"></script>
       <script src="/js/backToTop.js"></script>
+      <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+          }
+        });
+      </script>
+      <script type="text/javascript"
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+      </script>
     
 
     
