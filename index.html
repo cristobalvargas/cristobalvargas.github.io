@@ -47,16 +47,14 @@
             padding: 0 50px;
         }
 
-        /* --- CORRECCIÓN DE ESPACIOS (NUEVO) --- */
+        /* CORRECCIÓN DE ESPACIOS */
         section {
-            /* Quitamos el min-height: 100vh para eliminar huecos gigantes */
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 80px 0; /* Espaciado normal entre secciones */
+            padding: 80px 0;
         }
 
-        /* La portada SÍ debe ocupar toda la pantalla */
         .hero {
             min-height: 100vh;
             padding: 0;
@@ -101,7 +99,6 @@
         .nav-links a { color: var(--light-slate); }
         .nav-links a span { color: var(--green); margin-right: 5px; }
 
-        /* Estilo especial para el botón del CV en el menú */
         .resume-btn {
             border: 1px solid var(--green);
             color: var(--green) !important;
@@ -202,7 +199,6 @@
             gap: 50px;
         }
 
-        /* Estilos Foto Perfil */
         .profile-img {
             width: 100%;
             border-radius: 4px;
@@ -309,7 +305,7 @@
         .job-company { color: var(--green); }
         .job-date { font-family: var(--font-mono); font-size: 0.85rem; color: var(--light-slate); }
 
-        /* --- PROJECTS (Featured) --- */
+        /* --- PROJECTS --- */
         .project-item {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
@@ -417,7 +413,7 @@
             color: var(--slate);
         }
 
-        /* --- RESEARCH TABLE --- */
+        /* --- RESEARCH TABLE (ACTUALIZADA CON PI) --- */
         .table-responsive {
             overflow-x: auto;
             margin-top: 20px;
@@ -455,17 +451,24 @@
         .research-table .dept {
             color: var(--white);
             font-weight: 500;
-            width: 220px;
+            width: 200px;
+        }
+        .research-table .pi {
+            color: var(--slate);
+            font-style: italic;
+            font-size: 0.85rem;
+            width: 200px;
         }
         
         /* Ajuste móvil para tabla */
         @media (max-width: 600px) {
             .research-table th, .research-table td { padding: 10px; font-size: 0.8rem; }
             .dept { width: auto; display: block; margin-bottom: 5px; color: var(--green);}
+            .pi { width: auto; display: block; margin-top: 5px; color: var(--slate); }
             .research-table th { display: none; } 
             .research-table tr { display: block; margin-bottom: 20px; border: 1px solid var(--light-navy); padding: 10px; border-radius: 4px; }
-            .research-table td { display: block; border: none; padding: 5px 0; }
-            .research-table .year { display: inline-block; margin-bottom: 5px; }
+            .research-table td { display: block; border: none; padding: 2px 0; }
+            .research-table .year { display: inline-block; margin-bottom: 5px; font-weight: bold;}
         }
 
         /* --- FIXED SOCIALS --- */
@@ -531,7 +534,7 @@
 <body>
 
     <nav>
-        <a href="#" class="logo">CVS</a>
+        <a href="#" class="logo">CV</a>
         
         <div style="display:flex; align-items:center;">
             <ul class="nav-links">
@@ -588,7 +591,7 @@
                     <ul class="education-list">
                         <li>
                             <span class="edu-year">2025 - Present</span>
-                            <span class="edu-degree">Clinical Internship</span>
+                            <span class="edu-degree">Clinical Clerkship (Final Year)</span>
                             <span class="edu-school">Pontifical Catholic University of Chile</span>
                         </li>
                         <li>
@@ -679,7 +682,7 @@
                     
                     <div class="project-description">
                         <p>
-                            [cite_start]Implementation and validation of a color mapping technique for grading hepatic steatosis in the <strong>pediatric population</strong> (n=30) using MATLAB[cite: 533, 543]. [cite_start]The study demonstrated that Signal Intensity Loss (SIL) calculation is a reliable, non-inferior alternative (r=0.77) to the commercial PDFF Gold Standard[cite: 745, 747]. [cite_start]Presented at the <strong>Chilean Congress of Radiology (CChR) 2025</strong>[cite: 408].
+                            Implementation and validation of a color mapping technique for grading hepatic steatosis in the <strong>pediatric population</strong> (n=30) using MATLAB. The study demonstrated that Signal Intensity Loss (SIL) calculation is a reliable, non-inferior alternative (r=0.77) to the commercial PDFF Gold Standard. Presented at the <strong>Chilean Congress of Radiology (CChR) 2025</strong>.
                         </p>
                     </div>
                     
@@ -706,7 +709,7 @@
                     
                     <div class="project-description">
                         <p>
-                            [cite_start]Validation study conducted with <strong>119 medical students</strong> using the Kyoto Kagaku M82 phantom[cite: 22, 69]. [cite_start]Results demonstrated a <strong>162.8% improvement</strong> in macula and fovea identification skills after simulation training[cite: 24, 39]. [cite_start]Published in <em>Revista Latinoamericana de Simulación Clínica</em> (2024)[cite: 3].
+                            Validation study conducted with <strong>119 medical students</strong> using the Kyoto Kagaku M82 phantom. Results demonstrated a <strong>162.8% improvement</strong> in macula and fovea identification skills after simulation training. Published in <em>Revista Latinoamericana de Simulación Clínica</em> (2024).
                         </p>
                     </div>
                     
@@ -781,6 +784,7 @@
                             <th>Year</th>
                             <th>Department / School</th>
                             <th>Topic / Title</th>
+                            <th>Principal Investigator</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -788,46 +792,55 @@
                             <td class="year">2025</td>
                             <td class="dept">Radiology (iHEALTH)</td>
                             <td>Prostate T1/T2 parametric maps analysis (DESPOT+)</td>
+                            <td class="pi">González, MD; Coronado, PhD; Irarrázaval, PhD</td>
                         </tr>
                         <tr>
                             <td class="year">2025</td>
                             <td class="dept">Intensive Care</td>
                             <td>Biomechanical analysis of biomedical images</td>
+                            <td class="pi">Jaime Retamal, MD, PhD</td>
                         </tr>
                         <tr>
                             <td class="year">2025</td>
                             <td class="dept">Radiotherapy</td>
                             <td>Lymphopenia & SBRT outcomes in Hepatocellular Carcinoma</td>
+                            <td class="pi">Pablo Muñoz-Schuffenegger, MD</td>
                         </tr>
                         <tr>
                             <td class="year">2025</td>
                             <td class="dept">Gastroenterology</td>
                             <td>Abnormal p53 Expression in Barrett's Esophagus</td>
+                            <td class="pi">R. Palma, MD; A. Espino, MD</td>
                         </tr>
                         <tr>
                             <td class="year">2024</td>
                             <td class="dept">Gastroenterology</td>
                             <td>Prevalence of Barrett's Esophagus & Neoplasia</td>
+                            <td class="pi">M.J. Fuenzalida, MD; A. Espino, MD</td>
                         </tr>
                         <tr>
                             <td class="year">2023</td>
                             <td class="dept">Family Medicine</td>
                             <td>Abdominal Ultrasound in Primary Care</td>
+                            <td class="pi">Andrea Rioseco, MD</td>
                         </tr>
                         <tr>
                             <td class="year">2022</td>
                             <td class="dept">School of Medicine</td>
                             <td>Validation of fundoscopy phantom model</td>
+                            <td class="pi">Arturo E. Grau, MD (Mentor)</td>
                         </tr>
                         <tr>
                             <td class="year">2022</td>
                             <td class="dept">Neuroscience</td>
                             <td>Research in mechanisms of neuropathic pain</td>
+                            <td class="pi">Margarita Calvo, MD, PhD</td>
                         </tr>
                         <tr>
                             <td class="year">2020</td>
                             <td class="dept">Engineering</td>
                             <td>Design of gradients for desktop MRI</td>
+                            <td class="pi">Pablo Irarrázaval, PhD</td>
                         </tr>
                     </tbody>
                 </table>
@@ -856,5 +869,3 @@
 
 </body>
 </html>
-
-
