@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristóbal Vargas | Engineer & Doctor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* --- VARIABLES ESTILO BRITTANY CHIANG (NAVY & TEAL) --- */
+        :root {
+            --navy: #0a192f;
+            --light-navy: #112240;
+            --lightest-navy: #233554;
+            --slate: #8892b0;
+            --light-slate: #a8b2d1;
+            --white: #e6f1ff;
+            --green: #64ffda;
+            
+            --font-sans: 'Calibre', 'Inter', 'San Francisco', system-ui, sans-serif;
+            --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+        }
+
+        /* RESET & BASE */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        
+        body {
+            background-color: var(--navy);
+            color: var(--slate);
+            font-family: var(--font-sans);
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--green);
+            text-decoration: none;
+            position: relative;
+            transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+        }
+        a:hover { opacity: 0.8; }
+
+        /* LAYOUT GENERAL */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 50px;
+        }
+
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 100px 0;
+        }
+
+        /* --- NAV SUPERIOR --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            box-shadow: 0 10px 30px -10px rgba(2,12,27,0.7);
+        }
+
+        .logo {
+            color: var(--green);
+            font-family: var(--font-mono);
+            font-size: 1.2rem;
+            border: 1px solid var(--green);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links li { 
+            font-family: var(--font-mono); 
+            font-size: 0.9rem; 
+        }
+        
+        .nav-links a { color: var(--light-slate); }
+        .nav-links a span { color: var(--green); margin-right: 5px; }
+
+        /* --- HERO SECTION --- */
+        .hero h1 {
+            color: var(--green);
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .hero h2 {
+            font-size: clamp(40px, 8vw, 80px);
+            color: var(--white);
+            font-weight: 600;
+            line-height: 1.1;
+        }
+
+        .hero h3 {
+            font-size: clamp(30px, 7vw, 70px);
+            color: var(--slate);
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 540px;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            color: var(--green);
+            background-color: transparent;
+            border: 1px solid var(--green);
+            border-radius: 4px;
+            padding: 1.25rem 1.75rem;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.25s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+        }
+
+        /* --- SECTIONS HEADERS --- */
+        .section-heading {
+            display: flex;
+            align-items: center;
+            font-size: clamp(26px, 5vw, 32px);
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 40px;
+            width: 100%;
+        }
+
+        .section-heading span {
+            font-family: var(--font-mono);
+            color: var(--green);
+            font-size: 1.5rem;
+            margin-right: 10px;
+            font-weight: 400;
+        }
+
+        .section-heading::after {
+            content: "";
+            display: block;
+            width: 300px;
+            height: 1px;
+            background-color: var(--lightest-navy);
+            margin-left: 20px;
+        }
+
+        /* --- ABOUT & PHOTO --- */
+        .about-inner {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 50px;
+        }
+
+        /* Estilos Foto Perfil */
+        .profile-img {
+            width: 100%;
+            border-radius: 4px;
+            filter: grayscale(100%) contrast(1.1);
+            box-shadow: 20px 20px 0 0 var(--green);
+            transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
+            cursor: pointer;
+            position: relative;
+            z-index: 10;
+        }
+
+        .profile-img:hover {
+            filter: none;
+            box-shadow: 10px 10px 0 0 var(--green); 
+            transform: translate(-5px, -5px);
+        }
+
+        /* --- EDUCATION LIST --- */
+        .education-list {
+            list-style: none;
+            margin-bottom: 30px;
+            border-left: 2px solid var(--lightest-navy);
+            padding-left: 20px;
+        }
+
+        .education-list li {
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .education-list li::before {
+            content: "▹";
+            position: absolute;
+            left: -26px;
+            top: 0;
+            color: var(--green);
+            font-size: 0.8rem;
+            background: var(--navy); 
+        }
+
+        .edu-year {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--green);
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+
+        .edu-degree {
+            display: block;
+            color: var(--white);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .edu-school {
+            font-size: 0.9rem;
+            color: var(--slate);
+        }
+
+        /* --- SKILLS --- */
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(140px, 200px));
+            gap: 0 10px;
+            padding: 0;
+            margin: 20px 0 0 0;
+            overflow: hidden;
+            list-style: none;
+        }
+
+        .skills-list li {
+            position: relative;
+            margin-bottom: 10px;
+            padding-left: 20px;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+        }
+
+        .skills-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--green);
+        }
+
+        /* --- EXPERIENCE (Cards) --- */
+        .job-card {
+            margin-bottom: 30px;
+            padding: 25px;
+            background-color: var(--light-navy);
+            border-radius: 4px;
+            transition: transform 0.2s;
+        }
+        .job-card:hover { transform: translateY(-5px); }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            color: var(--white);
+            font-weight: 500;
+        }
+        .job-company { color: var(--green); }
+        .job-date { font-family: var(--font-mono); font-size: 0.85rem; color: var(--light-slate); }
+
+        /* --- PROJECTS (Featured) --- */
+        .project-item {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            align-items: center;
+            margin-bottom: 100px;
+        }
+
+        .project-content {
+            grid-column: 1 / 8;
+            grid-row: 1 / -1;
+            z-index: 2;
+        }
+
+        .project-image {
+            grid-column: 6 / -1;
+            grid-row: 1 / -1;
+            z-index: 1;
+            background-color: var(--green);
+            border-radius: 4px;
+            opacity: 0.6;
+            transition: opacity 0.3s;
+            height: 100%;
+            overflow: hidden; 
+        }
+        .project-image:hover { opacity: 1; background: transparent;}
+        
+        .project-image img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            border-radius: 4px; 
+            mix-blend-mode: multiply; 
+            filter: grayscale(100%) contrast(1); 
+            transition: all 0.3s;
+        }
+        .project-image:hover img { mix-blend-mode: normal; filter: none; }
+
+        .project-overline { color: var(--green); font-family: var(--font-mono); font-size: 0.8rem; margin-bottom: 10px; }
+        .project-title { color: var(--white); font-size: 1.8rem; margin-bottom: 20px; }
+        
+        .project-description {
+            background-color: var(--light-navy);
+            color: var(--light-slate);
+            padding: 25px;
+            border-radius: 4px;
+            font-size: 1rem;
+            box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
+            margin-bottom: 20px;
+        }
+        
+        .project-tech-list {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--light-slate);
+        }
+
+        /* --- PUBLICATIONS LIST --- */
+        .pub-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .pub-item {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+            align-items: baseline;
+            transition: transform 0.2s;
+        }
+
+        .pub-item:hover {
+            transform: translateX(10px);
+        }
+
+        .pub-year {
+            font-family: var(--font-mono);
+            color: var(--green);
+            font-size: 0.9rem;
+            min-width: 50px;
+        }
+
+        .pub-content strong {
+            color: var(--white);
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .pub-content em {
+            color: var(--light-slate);
+            font-size: 0.95rem;
+            font-style: normal;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .pub-authors {
+            font-size: 0.85rem;
+            font-family: var(--font-mono);
+            color: var(--slate);
+        }
+
+        /* --- FIXED SOCIALS --- */
+        .side-element {
+            width: 40px;
+            position: fixed;
+            bottom: 0;
+            z-index: 10;
+            color: var(--light-slate);
+        }
+        .left-side { left: 40px; }
+        .right-side { right: 40px; }
+
+        .social-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            list-style: none;
+            gap: 20px;
+        }
+        .social-list::after {
+            content: "";
+            display: block;
+            width: 1px;
+            height: 90px;
+            background-color: var(--light-slate);
+            margin-top: 20px;
+        }
+        .email-side {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .email-side a {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            writing-mode: vertical-rl;
+            margin-bottom: 20px;
+            letter-spacing: 0.1em;
+        }
+        .email-side::after {
+            content: "";
+            display: block;
+            width: 1px;
+            height: 90px;
+            background-color: var(--light-slate);
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .side-element { display: none; }
+            .container { padding: 0 25px; }
+            .about-inner { display: block; }
+            .project-item { display: block; margin-bottom: 50px;}
+            .project-content { grid-column: 1 / -1; }
+            .project-image { display: none; }
+            .project-description { background: transparent; padding: 0; box-shadow: none; }
+            nav { padding: 20px; }
+            .nav-links { display: none; } 
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">CV</a>
+        
+        <div style="display:flex; align-items:center;">
+            <ul class="nav-links">
+                <li><a href="#about"><span>01.</span> About</a></li>
+                <li><a href="#experience"><span>02.</span> Experience</a></li>
+                <li><a href="#work"><span>03.</span> Work</a></li>
+                <li><a href="#publications"><span>04.</span> Pubs</a></li>
+                <li><a href="#contact"><span>05.</span> Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="side-element left-side">
+        <ul class="social-list">
+            <li><a href="#"><i class="fab fa-github"></i></a></li>
+            <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="#"><i class="fas fa-flask"></i></a></li>
+        </ul>
+    </div>
+    <div class="side-element right-side">
+        <div class="email-side">
+            <a href="mailto:cavargas8@uc.cl">cavargas8@uc.cl</a>
+        </div>
+    </div>
+
+    <div id="content">
+        
+        <section class="hero container">
+            <h1>Hi, my name is</h1>
+            
+            <h2>Cristóbal Vargas Sepúlveda.</h2>
+            
+            <h3>I bridge Medicine & Engineering.</h3>
+            
+            <p>
+                I am a Biomedical Engineer and Medical Intern based in Santiago, Chile. I specialize in the intersection of clinical practice, radiology, and data analysis to build better healthcare solutions.
+            </p>
+            
+            <a href="#work" class="btn">Check out my research</a>
+        </section>
+
+        <section id="about" class="container">
+            <h2 class="section-heading">
+                <span>01.</span> About Me
+            </h2>
+            <div class="about-inner">
+                <div class="about-text">
+                    
+                    <ul class="education-list">
+                        <li>
+                            <span class="edu-year">2025 - Present</span>
+                            <span class="edu-degree">Clinical Internship</span>
+                            <span class="edu-school">Pontifical Catholic University of Chile</span>
+                        </li>
+                        <li>
+                            <span class="edu-year">2020 - 2025</span>
+                            <span class="edu-degree">Medical School (MD Candidate)</span>
+                            <span class="edu-school">Pontifical Catholic University of Chile</span>
+                        </li>
+                        <li>
+                            <span class="edu-year">2017 - 2021</span>
+                            <span class="edu-degree">B.Sc. in Biomedical Engineering</span>
+                            <span class="edu-school">Pontifical Catholic University of Chile</span>
+                        </li>
+                    </ul>
+
+                    <p>
+                        Hello! My journey began with a passion for understanding how things work, which led me to study <strong>Biomedical Engineering</strong>. However, I wanted to apply that knowledge directly to patients, so I pursued my <strong>Medical Degree</strong>.
+                    </p>
+                    <p>
+                        Currently, I am a Medical Intern focusing on Radiology and Gastroenterology. I actively contribute to clinical research, with abstracts accepted and under review at international congresses such as the <strong>ESICM in Munich</strong> and the upcoming <strong>Liver Cancer Summit in Edinburgh</strong>.
+                    </p>
+                    <p>
+                        I also leverage my engineering background in innovation. I served as a Teaching Assistant for <strong>3D modeling</strong> (Desktop MRI project) and in 2020, I was the <strong>Winner of The Clover 2030 Congress</strong> for my project "3DORT: Creation of customized orthoses using photographs."
+                    </p>
+                    <p>Here are a few technologies and tools I've been working with recently:</p>
+
+                    <ul class="skills-list">
+                        <li>Python</li>
+                        <li>Medicine (Clinical)</li>
+                        <li>Bio-Imaging (MRI/CT)</li>
+                        <li>3D Printing/Modeling</li>
+                        <li>MATLAB</li>
+                        <li>Research</li>
+                    </ul>
+                </div>
+                <div class="about-pic">
+                    <div style="position: relative; width: 100%; max-width: 300px;">
+                        <img src="foto.png" alt="Cristóbal Vargas" class="profile-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience" class="container" style="max-width: 700px;">
+            <h2 class="section-heading">
+                <span>02.</span> Where I've Worked
+            </h2>
+            
+            <div class="job-card">
+                <div class="job-header">
+                    <span class="job-title">Undergraduate Researcher @ <span class="job-company">School of Medicine</span></span>
+                    <span class="job-date">2022 - Present</span>
+                </div>
+                <p>
+                    Conducting research in mechanisms of neuropathic pain and gastroenterology. Validating phantom models for clinical simulation.
+                </p>
+            </div>
+
+            <div class="job-card">
+                <div class="job-header">
+                    <span class="job-title">Academic Coordinator @ <span class="job-company">Biomedical Student Chapter</span></span>
+                    <span class="job-date">2018 - 2019</span>
+                </div>
+                <p>
+                    Led academic initiatives and coordination for the Institute for Biological and Medical Engineering.
+                </p>
+            </div>
+
+            <div class="job-card">
+                <div class="job-header">
+                    <span class="job-title">Teaching Assistant @ <span class="job-company">UC Chile</span></span>
+                    <span class="job-date">2018 - 2024</span>
+                </div>
+                <p>
+                    Assistant for Chest Radiology, Social Innovation in Health, and Mathematics courses.
+                </p>
+            </div>
+        </section>
+
+        <section id="work" class="container">
+            <h2 class="section-heading">
+                <span>03.</span> Some Things I've Built
+            </h2>
+
+            <div class="project-item">
+                <div class="project-content">
+                    <p class="project-overline">Ongoing Research</p>
+                    <h3 class="project-title">MRI Hepatic Fat Grading</h3>
+                    
+                    <div class="project-description">
+                        <p>
+                            Implementation and validation of a color mapping technique for grading hepatic steatosis in the <strong>pediatric population</strong> (n=30) using MATLAB. The study demonstrated that Signal Intensity Loss (SIL) calculation is a reliable, non-inferior alternative (r=0.77) to the commercial PDFF Gold Standard. Presented at the <strong>Chilean Congress of Radiology (CChR) 2025</strong>.
+                        </p>
+                    </div>
+                    
+                    <ul class="project-tech-list">
+                        <li>MRI Physics</li>
+                        <li>MATLAB</li>
+                        <li>Pediatrics</li>
+                        <li>Liver Imaging</li>
+                    </ul>
+                </div>
+                <div class="project-image">
+                    <img src="Steatosis.png" alt="MRI Steatosis Scan">
+                </div>
+            </div>
+
+            <div class="project-item" style="text-align: right;">
+                <div class="project-image" style="grid-column: 1 / 8;">
+                    <img src="Plot.png" alt="Fundoscopy Validation Plot">
+                </div>
+                
+                <div class="project-content" style="grid-column: 6 / -1;">
+                    <p class="project-overline">Published Research</p>
+                    <h3 class="project-title">Fundoscopy Phantom Model</h3>
+                    
+                    <div class="project-description">
+                        <p>
+                            Validation study conducted with <strong>119 medical students</strong> using the Kyoto Kagaku M82 phantom. Results demonstrated a <strong>162.8% improvement</strong> in macula and fovea identification skills after simulation training. Published in <em>Revista Latinoamericana de Simulación Clínica</em> (2024).
+                        </p>
+                    </div>
+                    
+                    <ul class="project-tech-list" style="justify-content: flex-end;">
+                        <li>Medical Education</li>
+                        <li>Clinical Simulation</li>
+                        <li>Ophthalmology</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="publications" class="container" style="max-width: 800px;">
+            <h2 class="section-heading">
+                <span>04.</span> Publications & Conferences
+            </h2>
+            
+            <ul class="pub-list">
+                <li class="pub-item">
+                    <span class="pub-year">2025</span>
+                    <div class="pub-content">
+                        <strong>Identification of a BMI threshold associated with reduced respiratory system compliance</strong>
+                        
+                        <em>Presented at European Society of Intensive Care Medicine (ESICM) - Munich, Germany</em>
+                        
+                        <span class="pub-authors">Benites, Morales, Vargas, Santis, et al.</span>
+                    </div>
+                </li>
+
+                <li class="pub-item">
+                    <span class="pub-year">2025</span>
+                    <div class="pub-content">
+                        <strong>Technique for Grading Hepatic Fat Percentage by MRI in Pediatric Population</strong>
+                        
+                        <em>Oral Presentation at Chilean Congress of Radiology (CChR)</em>
+                        
+                        <span class="pub-authors">González JM, Vargas C, Gana JC, et al.</span>
+                    </div>
+                </li>
+
+                <li class="pub-item">
+                    <span class="pub-year">2025</span>
+                    <div class="pub-content">
+                        <strong>Sarcopenia in Critically Ill Patients with ARDS: Longitudinal Assessment</strong>
+                        
+                        <em>43rd Chilean Congress of Intensive Care Medicine</em>
+                        
+                        <span class="pub-authors">Hernández, Santos, Vargas C, Vera H, Besa, Santis, et al.</span>
+                    </div>
+                </li>
+
+                <li class="pub-item">
+                    <span class="pub-year">2023</span>
+                    <div class="pub-content">
+                        <strong>Barrett's Esophagus in Chile: Characterization of an endoscopic cohort</strong>
+                        
+                        <em>Pan American Week of Digestive Diseases (SPED)</em>
+                        
+                        <span class="pub-authors">Fuenzalida, Latorre, Vargas J... Vargas C, et al.</span>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section id="contact" class="container" style="text-align: center; max-width: 600px;">
+            <h2 class="section-heading" style="justify-content: center; margin-bottom: 20px;">
+                <span>05.</span> What's Next?
+            </h2>
+            
+            <h2 style="font-size: 50px; color: var(--white); margin-bottom: 20px;">Get In Touch</h2>
+            
+            <p style="margin-bottom: 50px;">
+                I am currently open to research collaborations and residency opportunities. Whether you have a question or just want to say hi, my inbox is always open.
+            </p>
+            
+            <a href="mailto:cavargas8@uc.cl" class="btn">Say Hello</a>
+        </section>
+        
+        <footer style="text-align: center; padding: 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--light-slate);">
+            <p>Designed & Built by Cristóbal Vargas Sepúlveda</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
