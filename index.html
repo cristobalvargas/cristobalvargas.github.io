@@ -82,13 +82,13 @@
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 30px;
+            gap: 20px;
             align-items: center;
         }
 
         .nav-links li { 
             font-family: var(--font-mono); 
-            font-size: 0.9rem; 
+            font-size: 0.85rem; 
         }
         
         .nav-links a { color: var(--light-slate); }
@@ -391,6 +391,57 @@
             color: var(--slate);
         }
 
+        /* --- RESEARCH TABLE (NUEVO) --- */
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+        .research-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+        .research-table th {
+            color: var(--slate);
+            font-family: var(--font-mono);
+            font-weight: 400;
+            padding: 15px;
+            border-bottom: 1px solid var(--lightest-navy);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+        }
+        .research-table td {
+            padding: 15px;
+            border-bottom: 1px solid var(--light-navy);
+            color: var(--light-slate);
+            vertical-align: top;
+        }
+        .research-table tr:hover {
+            background-color: var(--light-navy);
+        }
+        .research-table .year {
+            color: var(--green);
+            font-family: var(--font-mono);
+            width: 80px;
+        }
+        .research-table .dept {
+            color: var(--white);
+            font-weight: 500;
+            width: 220px;
+        }
+        
+        /* Ajuste móvil para tabla */
+        @media (max-width: 600px) {
+            .research-table th, .research-table td { padding: 10px; font-size: 0.8rem; }
+            .dept { width: auto; display: block; margin-bottom: 5px; color: var(--green);}
+            .research-table th { display: none; } /* Ocultar headers en móvil */
+            .research-table tr { display: block; margin-bottom: 20px; border: 1px solid var(--light-navy); padding: 10px; border-radius: 4px; }
+            .research-table td { display: block; border: none; padding: 5px 0; }
+            .research-table .year { display: inline-block; margin-bottom: 5px; }
+        }
+
         /* --- FIXED SOCIALS --- */
         .side-element {
             width: 40px;
@@ -462,7 +513,8 @@
                 <li><a href="#experience"><span>02.</span> Experience</a></li>
                 <li><a href="#work"><span>03.</span> Work</a></li>
                 <li><a href="#publications"><span>04.</span> Pubs</a></li>
-                <li><a href="#contact"><span>05.</span> Contact</a></li>
+                <li><a href="#research-list"><span>05.</span> Research</a></li>
+                <li><a href="#contact"><span>06.</span> Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -689,9 +741,72 @@
             </ul>
         </section>
 
+        <section id="research-list" class="container">
+            <h2 class="section-heading"><span>05.</span> Research Assistantships</h2>
+            
+            <div class="table-responsive">
+                <table class="research-table">
+                    <thead>
+                        <tr>
+                            <th>Year</th>
+                            <th>Department / School</th>
+                            <th>Topic / Title</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="year">2025</td>
+                            <td class="dept">Radiology (iHEALTH)</td>
+                            <td>Prostate T1/T2 parametric maps analysis (DESPOT+)</td>
+                        </tr>
+                        <tr>
+                            <td class="year">2025</td>
+                            <td class="dept">Intensive Care</td>
+                            <td>Biomechanical analysis of biomedical images</td>
+                        </tr>
+                        <tr>
+                            <td class="year">2025</td>
+                            <td class="dept">Radiotherapy</td>
+                            <td>Lymphopenia & SBRT outcomes in Hepatocellular Carcinoma</td>
+                        </tr>
+                        <tr>
+                            <td class="year">2025</td>
+                            <td class="dept">Gastroenterology</td>
+                            <td>Abnormal p53 Expression in Barrett's Esophagus</td>
+                        </tr>
+                        <tr>
+                            <td class="year">2024</td>
+                            <td class="dept">Gastroenterology</td>
+                            <td>Prevalence of Barrett's Esophagus & Neoplasia</td>
+                        </tr>
+                        <tr>
+                            <td class="year">2023</td>
+                            <td class="dept">Family Medicine</td>
+                            <td>Abdominal Ultrasound in Primary Care</td>
+                        </tr>
+                        <tr>
+                            <td class="year">2022</td>
+                            <td class="dept">School of Medicine</td>
+                            <td>Validation of fundoscopy phantom model</td>
+                        </tr>
+                        <tr>
+                            <td class="year">2022</td>
+                            <td class="dept">Neuroscience</td>
+                            <td>Research in mechanisms of neuropathic pain</td>
+                        </tr>
+                        <tr>
+                            <td class="year">2020</td>
+                            <td class="dept">Engineering</td>
+                            <td>Design of gradients for desktop MRI</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
         <section id="contact" class="container" style="text-align: center; max-width: 600px;">
             <h2 class="section-heading" style="justify-content: center; margin-bottom: 20px;">
-                <span>05.</span> What's Next?
+                <span>06.</span> What's Next?
             </h2>
             
             <h2 style="font-size: 50px; color: var(--white); margin-bottom: 20px;">Get In Touch</h2>
