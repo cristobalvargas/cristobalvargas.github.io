@@ -94,6 +94,19 @@
         .nav-links a { color: var(--light-slate); }
         .nav-links a span { color: var(--green); margin-right: 5px; }
 
+        /* Estilo especial para el botón del CV en el menú */
+        .resume-btn {
+            border: 1px solid var(--green);
+            color: var(--green) !important;
+            padding: 8px 16px;
+            border-radius: 4px;
+            margin-left: 10px;
+            transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+        }
+        .resume-btn:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+        }
+
         /* --- HERO SECTION --- */
         .hero h1 {
             color: var(--green);
@@ -122,6 +135,12 @@
             max-width: 540px;
             margin-bottom: 50px;
             font-size: 1.1rem;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
         .btn {
@@ -391,7 +410,7 @@
             color: var(--slate);
         }
 
-        /* --- RESEARCH TABLE (NUEVO) --- */
+        /* --- RESEARCH TABLE --- */
         .table-responsive {
             overflow-x: auto;
             margin-top: 20px;
@@ -436,7 +455,7 @@
         @media (max-width: 600px) {
             .research-table th, .research-table td { padding: 10px; font-size: 0.8rem; }
             .dept { width: auto; display: block; margin-bottom: 5px; color: var(--green);}
-            .research-table th { display: none; } /* Ocultar headers en móvil */
+            .research-table th { display: none; } 
             .research-table tr { display: block; margin-bottom: 20px; border: 1px solid var(--light-navy); padding: 10px; border-radius: 4px; }
             .research-table td { display: block; border: none; padding: 5px 0; }
             .research-table .year { display: inline-block; margin-bottom: 5px; }
@@ -515,6 +534,7 @@
                 <li><a href="#publications"><span>04.</span> Pubs</a></li>
                 <li><a href="#research-list"><span>05.</span> Research</a></li>
                 <li><a href="#contact"><span>06.</span> Contact</a></li>
+                <li><a href="cv.pdf" target="_blank" class="resume-btn">Resume</a></li>
             </ul>
         </div>
     </nav>
@@ -545,7 +565,10 @@
                 I am a Biomedical Engineer and Medical Intern based in Santiago, Chile. I specialize in the intersection of clinical practice, radiology, and data analysis to build better healthcare solutions.
             </p>
             
-            <a href="#work" class="btn">Check out my research</a>
+            <div class="btn-container">
+                <a href="#work" class="btn">Check out my research</a>
+                <a href="cv.pdf" target="_blank" class="btn"><i class="fas fa-file-pdf"></i> Download CV</a>
+            </div>
         </section>
 
         <section id="about" class="container">
