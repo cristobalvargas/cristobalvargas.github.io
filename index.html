@@ -17,7 +17,6 @@
             --white: #e6f1ff;
             --green: #64ffda;
             
-            /* Tipografía estilo LaTeX (Lora para texto principal, Cousine para mono) */
             --font-sans: 'Lora', 'Georgia', 'Times New Roman', Times, serif; 
             --font-mono: 'Cousine', 'Fira Code', 'Fira Mono', monospace;
         }
@@ -57,9 +56,15 @@
             padding: 80px 0;
         }
 
+        /* CAMBIO: Altura reducida para acercar el contenido siguiente */
         .hero {
-            min-height: 100vh;
+            min-height: 85vh; /* Antes 100vh */
             padding: 0;
+        }
+
+        /* NUEVO: Quitamos el relleno superior solo a la sección About */
+        #about {
+            padding-top: 0;
         }
 
         /* --- NAV SUPERIOR --- */
@@ -870,6 +875,3 @@
 
 </body>
 </html>
-
-
-
