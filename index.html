@@ -33,7 +33,6 @@
             background-color: var(--navy);
             color: var(--slate);
             font-family: var(--font-sans);
-            /* BASE GRANDE PARA QUE TODO SE VEA "ZOOMEADO" */
             font-size: 22px; 
             line-height: 1.6;
         }
@@ -48,7 +47,7 @@
 
         /* LAYOUT GENERAL */
         .container {
-            max-width: 1500px; /* Ancho amplio para pantallas grandes */
+            max-width: 1500px;
             margin: 0 auto;
             padding: 0 50px;
         }
@@ -85,7 +84,7 @@
         .logo {
             color: var(--green);
             font-family: var(--font-mono);
-            font-size: 1.4rem; /* Logo un poco más grande */
+            font-size: 1.4rem;
             border: 1px solid var(--green);
             padding: 5px 10px;
             border-radius: 4px;
@@ -100,7 +99,7 @@
 
         .nav-links li { 
             font-family: var(--font-mono); 
-            font-size: 1rem; /* Aumentado tamaño links menú */
+            font-size: 1rem; 
         }
         
         .nav-links a { color: var(--light-slate); }
@@ -125,7 +124,7 @@
         }
 
         .hero h2 {
-            font-size: clamp(50px, 6vw, 80px); /* Títulos MUY grandes */
+            font-size: clamp(50px, 6vw, 80px);
             color: var(--white);
             font-weight: 600;
             line-height: 1.1;
@@ -142,7 +141,7 @@
         .hero p {
             max-width: 800px;
             margin-bottom: 50px;
-            font-size: 1.5rem; /* Párrafo intro AUMENTADO */
+            font-size: 1.5rem;
             line-height: 1.5;
         }
 
@@ -155,7 +154,7 @@
             border-radius: 4px;
             padding: 1.25rem 2rem;
             font-family: var(--font-mono);
-            font-size: 1.1rem; /* Botones más grandes */
+            font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.25s;
             display: inline-block;
@@ -166,7 +165,7 @@
         .section-heading {
             display: flex;
             align-items: center;
-            font-size: clamp(30px, 5vw, 40px); /* Títulos de sección más grandes */
+            font-size: clamp(30px, 5vw, 40px);
             color: var(--white);
             font-weight: 600;
             margin-bottom: 50px;
@@ -213,7 +212,7 @@
             transform: translate(-5px, -5px);
         }
 
-        /* --- EDUCATION LIST (AJUSTADO PARA QUE SE VEA GRANDE) --- */
+        /* --- EDUCATION LIST --- */
         .education-list {
             list-style: none;
             margin-bottom: 40px;
@@ -222,14 +221,14 @@
         }
 
         .education-list li {
-            margin-bottom: 25px; /* Más espacio entre items */
+            margin-bottom: 25px;
             position: relative;
         }
 
         .education-list li::before {
             content: "▹";
             position: absolute;
-            left: -32px; /* Ajuste flecha */
+            left: -32px;
             top: 5px;
             color: var(--green);
             font-size: 1rem;
@@ -238,7 +237,7 @@
 
         .edu-year {
             font-family: var(--font-mono);
-            font-size: 1.1rem; /* AUMENTADO: Año más grande */
+            font-size: 1.1rem;
             color: var(--green);
             margin-bottom: 8px;
             display: inline-block;
@@ -247,13 +246,13 @@
         .edu-degree {
             display: block;
             color: var(--white);
-            font-size: 1.4rem; /* AUMENTADO: Título carrera grande */
-            font-weight: 600; /* Más peso */
+            font-size: 1.4rem;
+            font-weight: 600;
             margin-bottom: 5px;
         }
 
         .edu-school {
-            font-size: 1.2rem; /* AUMENTADO: Universidad */
+            font-size: 1.2rem;
             color: var(--slate);
         }
 
@@ -272,7 +271,7 @@
             margin-bottom: 10px;
             padding-left: 25px;
             font-family: var(--font-mono);
-            font-size: 1.1rem; /* AUMENTADO: Skills más grandes */
+            font-size: 1.1rem;
         }
 
         .skills-list li::before {
@@ -282,7 +281,7 @@
             color: var(--green);
         }
 
-        /* --- EXPERIENCE (Cards) --- */
+        /* --- EXPERIENCE --- */
         .job-card {
             margin-bottom: 35px;
             padding: 35px;
@@ -298,16 +297,16 @@
             margin-bottom: 15px;
             color: var(--white);
             font-weight: 500;
-            font-size: 1.3rem; /* Título trabajo grande */
+            font-size: 1.3rem;
         }
         .job-company { color: var(--green); }
         .job-date { 
             font-family: var(--font-mono); 
-            font-size: 1rem; /* Fecha trabajo aumentada */
+            font-size: 1rem; 
             color: var(--light-slate); 
         }
 
-        /* --- PROJECTS --- */
+        /* --- PROJECTS (AJUSTE DE IMAGEN) --- */
         .project-item {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
@@ -316,20 +315,19 @@
         }
 
         .project-content {
-            grid-column: 1 / 8;
-            grid-row: 1 / -1;
+            /* Se ajustará inline, pero base aquí */
             z-index: 2;
         }
 
         .project-image {
-            grid-column: 6 / -1;
-            grid-row: 1 / -1;
             z-index: 1;
             background-color: var(--green);
             border-radius: 4px;
             opacity: 0.6;
             transition: opacity 0.3s;
             height: 100%;
+            /* NUEVO: Limitar altura de imagen */
+            max-height: 400px; 
             overflow: hidden; 
         }
         .project-image:hover { opacity: 1; background: transparent;}
@@ -346,14 +344,14 @@
         .project-image:hover img { mix-blend-mode: normal; filter: none; }
 
         .project-overline { color: var(--green); font-family: var(--font-mono); font-size: 1rem; margin-bottom: 10px; }
-        .project-title { color: var(--white); font-size: 2.2rem; margin-bottom: 25px; } /* Título proyecto aumentado */
+        .project-title { color: var(--white); font-size: 2.2rem; margin-bottom: 25px; }
         
         .project-description {
             background-color: var(--light-navy);
             color: var(--light-slate);
             padding: 30px;
             border-radius: 4px;
-            font-size: 1.15rem; /* Texto descripción aumentado */
+            font-size: 1.15rem;
             box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
             margin-bottom: 25px;
         }
@@ -363,7 +361,7 @@
             list-style: none;
             gap: 25px;
             font-family: var(--font-mono);
-            font-size: 1rem; /* Tech list aumentada */
+            font-size: 1rem;
             color: var(--light-slate);
         }
 
@@ -383,13 +381,13 @@
         .pub-year {
             font-family: var(--font-mono);
             color: var(--green);
-            font-size: 1.1rem; /* Año pub grande */
+            font-size: 1.1rem;
             min-width: 60px;
         }
 
         .pub-content strong {
             color: var(--white);
-            font-size: 1.3rem; /* Título pub grande */
+            font-size: 1.3rem;
             display: block;
             margin-bottom: 8px;
         }
@@ -414,7 +412,7 @@
         .research-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 1.1rem; /* Texto tabla aumentado */
+            font-size: 1.1rem;
             text-align: left;
         }
         .research-table th {
@@ -464,7 +462,7 @@
             background-color: var(--light-slate);
             margin-top: 20px;
         }
-        .social-list a { font-size: 1.3rem; } /* Iconos más grandes */
+        .social-list a { font-size: 1.3rem; }
 
         .email-side {
             display: flex;
@@ -500,7 +498,6 @@
             .side-element { display: none; }
             .container { padding: 0 25px; max-width: 100%; } 
             
-            /* Ajuste tamaños en móvil para que no sean excesivos */
             body { font-size: 18px; } 
             .hero h2 { font-size: 40px; }
             .hero h3 { font-size: 30px; }
@@ -514,7 +511,6 @@
             .project-description { background: transparent; padding: 0; box-shadow: none; font-size: 1rem;}
             nav { padding: 20px; }
             
-            /* Menu Movil Logica */
             .menu-btn { display: block; }
             .nav-links {
                 display: flex;
@@ -534,7 +530,6 @@
             .nav-links.active { right: 0; }
             .nav-links li { margin: 20px 0; font-size: 1.2rem; }
 
-            /* Tabla Movil */
             .research-table th, .research-table td { padding: 10px; font-size: 0.9rem; }
             .dept { width: auto; display: block; margin-bottom: 5px; color: var(--green);}
             .pi { width: auto; display: block; margin-top: 5px; color: var(--slate); }
@@ -690,7 +685,7 @@
             </h2>
 
             <div class="project-item">
-                <div class="project-content" style="grid-column: 1 / 8; text-align: left;">
+                <div class="project-content" style="grid-column: 1 / 9; text-align: left;">
                     <p class="project-overline">Ongoing Research</p>
                     <h3 class="project-title">ROP Screening Simulator</h3>
             
@@ -708,17 +703,17 @@
                     </ul>
                 </div>
             
-                <div class="project-image" style="grid-column: 6 / -1;">
+                <div class="project-image" style="grid-column: 8 / -1;">
                     <a href="#"> <img src="ROP.png" alt="ROP Screening Simulator Prototype"></a>
                 </div>
             </div>
 
             <div class="project-item" style="text-align: right;">
-                <div class="project-image" style="grid-column: 1 / 8;">
+                <div class="project-image" style="grid-column: 1 / 6;">
                     <img src="steatosis.png" alt="MRI Steatosis Scan">
                 </div>
 
-                <div class="project-content" style="grid-column: 6 / -1;">
+                <div class="project-content" style="grid-column: 5 / -1;">
                     <p class="project-overline">Ongoing Research</p>
                     <h3 class="project-title">MRI Hepatic Fat Grading</h3>
                     
@@ -738,7 +733,7 @@
             </div>
 
             <div class="project-item">
-                <div class="project-content" style="grid-column: 1 / 8; text-align: left;">
+                <div class="project-content" style="grid-column: 1 / 9; text-align: left;">
                     <p class="project-overline">Published Research</p>
                     <h3 class="project-title">Fundoscopy Phantom Model</h3>
                     
@@ -755,7 +750,7 @@
                     </ul>
                 </div>
 
-                <div class="project-image" style="grid-column: 6 / -1;">
+                <div class="project-image" style="grid-column: 8 / -1;">
                     <img src="plot.png" alt="Fundoscopy Validation Plot">
                 </div>
             </div>
