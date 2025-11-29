@@ -79,11 +79,11 @@
         .job-company { color: var(--green); }
         .job-date { font-family: var(--font-mono); font-size: 1rem; color: var(--light-slate); }
 
-        /* --- PROJECTS (AJUSTES DE TAMAÑO Y CENTRADO) --- */
+        /* --- PROJECTS (CORRECCIÓN FRANAJA VERDE) --- */
         .project-item {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
-            align-items: center; /* Centra verticalmente los elementos */
+            align-items: center;
             margin-bottom: 120px;
         }
 
@@ -94,20 +94,18 @@
         }
 
         .project-image {
-            grid-row: 1 / -1; /* Mantiene la superposición */
-            z-index: 1; 
-            background-color: var(--green);
+            grid-row: 1 / -1;
+            z-index: 1;
+            /* background-color: var(--green);  <-- ELIMINADO ESTO */
             border-radius: 4px;
             opacity: 0.6;
             transition: opacity 0.3s;
-            /* CAMBIO CLAVE: Quitamos height: 100% y añadimos align-self: center */
-            align-self: center; 
-            overflow: hidden; 
+            align-self: center;
+            overflow: hidden;
             position: relative;
-            /* Opcional: Altura máxima para que no sea gigante */
             max-height: 500px;
         }
-        .project-image:hover { opacity: 1; background: transparent;}
+        .project-image:hover { opacity: 1; } /* Eliminado background: transparent aquí también */
         
         .project-image img { 
             width: 100%; 
@@ -187,7 +185,7 @@
             .about-inner { display: block; }
             .project-item { display: block; margin-bottom: 50px;}
             .project-content { grid-column: 1 / -1; }
-            .project-image { display: none; } 
+            .project-image { display: none; }
             .project-description { background: transparent; padding: 0; box-shadow: none; font-size: 1rem;}
             nav { padding: 20px; }
             .menu-btn { display: block; }
