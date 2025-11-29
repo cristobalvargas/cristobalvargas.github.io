@@ -7,10 +7,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* --- VARIABLES ESTILO BRITTANY CHIANG (NAVY & TEAL) --- */
-        @font-face{font-family:'Kievit';font-weight:400;font-style:normal;src:url(https://pacha.dev/fonts/kvn.eot?#iefix) format("embedded-opentype"),url(https://pacha.dev/fonts/kvn.woff) format("woff")}
-        @font-face{font-family:'Kievit';font-weight:400;font-style:italic;src:url(https://pacha.dev/fonts/kvi.eot?#iefix) format("embedded-opentype"),url(https://pacha.dev/fonts/kvi.woff) format("woff")}
-        @font-face{font-family:'Kievit';font-weight:700;font-style:normal;src:url(https://pacha.dev/fonts/kvb.eot?#iefix) format("embedded-opentype"),url(https://pacha.dev/fonts/kvb.woff) format("woff")}
-        @font-face{font-family:'Kievit';font-weight:700;font-style:italic;src:url(https://pacha.dev/fonts/kvbi.eot?#iefix) format("embedded-opentype"),url(https://pacha.dev/fonts/kvbi.woff) format("woff")}
+
+        @font-face{font-family:'Kievit';font-weight:400;font-style:normal;src:url(https://pacha.dev/fonts/kvn.eot?#iefix) 
+            format("embedded-opentype"),url(https://pacha.dev/fonts/kvn.woff) format("woff")}
+        @font-face{font-family:'Kievit';font-weight:400;font-style:italic;src:url(https://pacha.dev/fonts/kvi.eot?#iefix) 
+            format("embedded-opentype"),url(https://pacha.dev/fonts/kvi.woff) format("woff")}
+        @font-face{font-family:'Kievit';font-weight:700;font-style:normal;src:url(https://pacha.dev/fonts/kvb.eot?#iefix) 
+            format("embedded-opentype"),url(https://pacha.dev/fonts/kvb.woff) format("woff")}
+        @font-face{font-family:'Kievit';font-weight:700;font-style:italic;src:url(https://pacha.dev/fonts/kvbi.eot?#iefix) 
+            format("embedded-opentype"),url(https://pacha.dev/fonts/kvbi.woff) format("woff")}
 
         :root {
             --navy: #0a192f;
@@ -33,6 +38,7 @@
             background-color: var(--navy);
             color: var(--slate);
             font-family: var(--font-sans);
+            /* AUMENTADO A 22PX PARA MATCH CON EL ANCHO */
             font-size: 22px; 
             line-height: 1.6;
         }
@@ -47,24 +53,28 @@
 
         /* LAYOUT GENERAL */
         .container {
+            /* CAMBIO CLAVE: Aumentado a 1500px para llenar la pantalla */
             max-width: 1500px;
             margin: 0 auto;
             padding: 0 50px;
         }
 
+        /* CORRECCIÓN DE ESPACIOS */
         section {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 100px 0;
+            padding: 80px 0;
         }
 
         .hero {
-            min-height: 90vh; 
+            min-height: 85vh; 
             padding: 0;
         }
 
-        #about { padding-top: 50px; }
+        #about {
+            padding-top: 0;
+        }
 
         /* --- NAV SUPERIOR --- */
         nav {
@@ -75,7 +85,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 25, 47, 0.9);
+            background: rgba(10, 25, 47, 0.85);
             backdrop-filter: blur(10px);
             z-index: 100;
             box-shadow: 0 10px 30px -10px rgba(2,12,27,0.7);
@@ -84,7 +94,7 @@
         .logo {
             color: var(--green);
             font-family: var(--font-mono);
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             border: 1px solid var(--green);
             padding: 5px 10px;
             border-radius: 4px;
@@ -93,13 +103,13 @@
         .nav-links {
             list-style: none;
             display: flex;
-            gap: 25px;
+            gap: 20px;
             align-items: center;
         }
 
         .nav-links li { 
             font-family: var(--font-mono); 
-            font-size: 1rem; 
+            font-size: 0.85rem; 
         }
         
         .nav-links a { color: var(--light-slate); }
@@ -108,75 +118,84 @@
         .resume-btn {
             border: 1px solid var(--green);
             color: var(--green) !important;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 4px;
             margin-left: 10px;
+            transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
         }
-        .resume-btn:hover { background-color: rgba(100, 255, 218, 0.1); }
+        .resume-btn:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+        }
 
         /* --- HERO SECTION --- */
         .hero h1 {
             color: var(--green);
             font-family: var(--font-mono);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 400;
             margin-bottom: 20px;
         }
 
         .hero h2 {
-            font-size: clamp(50px, 6vw, 80px);
+            font-size: clamp(40px, 5vw, 70px); /* Aumentado max size */
             color: var(--white);
             font-weight: 600;
             line-height: 1.1;
         }
 
         .hero h3 {
-            font-size: clamp(40px, 5vw, 70px);
+            font-size: clamp(30px, 4vw, 60px); /* Aumentado max size */
             color: var(--slate);
             font-weight: 600;
             line-height: 1.1;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .hero p {
-            max-width: 800px;
+            max-width: 600px; /* Aumentado ancho de lectura */
             margin-bottom: 50px;
-            font-size: 1.5rem;
-            line-height: 1.5;
+            font-size: 1.2rem;
         }
 
-        .btn-container { display: flex; gap: 20px; flex-wrap: wrap; }
+        .btn-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
 
         .btn {
             color: var(--green);
             background-color: transparent;
             border: 1px solid var(--green);
             border-radius: 4px;
-            padding: 1.25rem 2rem;
+            padding: 1.25rem 1.75rem;
             font-family: var(--font-mono);
-            font-size: 1.1rem;
+            font-size: 1rem;
             cursor: pointer;
             transition: all 0.25s;
             display: inline-block;
         }
-        .btn:hover { background-color: rgba(100, 255, 218, 0.1); }
+
+        .btn:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+        }
 
         /* --- SECTIONS HEADERS --- */
         .section-heading {
             display: flex;
             align-items: center;
-            font-size: clamp(30px, 5vw, 40px);
+            font-size: clamp(26px, 5vw, 36px);
             color: var(--white);
             font-weight: 600;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             width: 100%;
         }
 
         .section-heading span {
             font-family: var(--font-mono);
             color: var(--green);
-            font-size: 1.8rem;
-            margin-right: 15px;
+            font-size: 1.5rem;
+            margin-right: 10px;
             font-weight: 400;
         }
 
@@ -193,7 +212,7 @@
         .about-inner {
             display: grid;
             grid-template-columns: 3fr 2fr;
-            gap: 60px;
+            gap: 50px;
         }
 
         .profile-img {
@@ -201,11 +220,12 @@
             border-radius: 4px;
             filter: sepia(0.5);
             box-shadow: 20px 20px 0 0 var(--green);
-            transition: all 0.3s;
+            transition: all 0.3s cubic-bezier(0.645,0.045,0.355,1);
             cursor: pointer;
             position: relative;
             z-index: 10;
         }
+
         .profile-img:hover {
             filter: none;
             box-shadow: 10px 10px 0 0 var(--green); 
@@ -215,44 +235,43 @@
         /* --- EDUCATION LIST --- */
         .education-list {
             list-style: none;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             border-left: 2px solid var(--lightest-navy);
-            padding-left: 25px;
+            padding-left: 20px;
         }
 
         .education-list li {
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             position: relative;
         }
 
         .education-list li::before {
             content: "▹";
             position: absolute;
-            left: -32px;
-            top: 5px;
+            left: -26px;
+            top: 0;
             color: var(--green);
-            font-size: 1rem;
+            font-size: 0.8rem;
             background: var(--navy); 
         }
 
         .edu-year {
             font-family: var(--font-mono);
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             color: var(--green);
-            margin-bottom: 8px;
+            margin-bottom: 5px;
             display: inline-block;
         }
 
         .edu-degree {
             display: block;
             color: var(--white);
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 5px;
+            font-size: 1.1rem;
+            font-weight: 500;
         }
 
         .edu-school {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: var(--slate);
         }
 
@@ -260,18 +279,19 @@
         .skills-list {
             display: grid;
             grid-template-columns: repeat(2, minmax(140px, 200px));
-            gap: 10px 20px;
+            gap: 0 10px;
             padding: 0;
-            margin: 30px 0 0 0;
+            margin: 20px 0 0 0;
+            overflow: hidden;
             list-style: none;
         }
 
         .skills-list li {
             position: relative;
             margin-bottom: 10px;
-            padding-left: 25px;
+            padding-left: 20px;
             font-family: var(--font-mono);
-            font-size: 1.1rem;
+            font-size: 0.95rem;
         }
 
         .skills-list li::before {
@@ -281,10 +301,10 @@
             color: var(--green);
         }
 
-        /* --- EXPERIENCE --- */
+        /* --- EXPERIENCE (Cards) --- */
         .job-card {
-            margin-bottom: 35px;
-            padding: 35px;
+            margin-bottom: 30px;
+            padding: 30px; /* Aumentado padding */
             background-color: var(--light-navy);
             border-radius: 4px;
             transition: transform 0.2s;
@@ -294,19 +314,15 @@
         .job-header {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             color: var(--white);
             font-weight: 500;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
         }
         .job-company { color: var(--green); }
-        .job-date { 
-            font-family: var(--font-mono); 
-            font-size: 1rem; 
-            color: var(--light-slate); 
-        }
+        .job-date { font-family: var(--font-mono); font-size: 0.9rem; color: var(--light-slate); }
 
-        /* --- PROJECTS (AJUSTE DE IMAGEN) --- */
+        /* --- PROJECTS --- */
         .project-item {
             display: grid;
             grid-template-columns: repeat(12, 1fr);
@@ -315,19 +331,20 @@
         }
 
         .project-content {
-            /* Se ajustará inline, pero base aquí */
+            grid-column: 1 / 8;
+            grid-row: 1 / -1;
             z-index: 2;
         }
 
         .project-image {
+            grid-column: 6 / -1;
+            grid-row: 1 / -1;
             z-index: 1;
             background-color: var(--green);
             border-radius: 4px;
             opacity: 0.6;
             transition: opacity 0.3s;
             height: 100%;
-            /* NUEVO: Limitar altura de imagen */
-            max-height: 400px; 
             overflow: hidden; 
         }
         .project-image:hover { opacity: 1; background: transparent;}
@@ -343,100 +360,124 @@
         }
         .project-image:hover img { mix-blend-mode: normal; filter: none; }
 
-        .project-overline { color: var(--green); font-family: var(--font-mono); font-size: 1rem; margin-bottom: 10px; }
-        .project-title { color: var(--white); font-size: 2.2rem; margin-bottom: 25px; }
+        .project-overline { color: var(--green); font-family: var(--font-mono); font-size: 0.9rem; margin-bottom: 10px; }
+        .project-title { color: var(--white); font-size: 2rem; margin-bottom: 20px; }
         
         .project-description {
             background-color: var(--light-navy);
             color: var(--light-slate);
-            padding: 30px;
+            padding: 25px;
             border-radius: 4px;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         
         .project-tech-list {
             display: flex;
             list-style: none;
-            gap: 25px;
+            gap: 20px;
             font-family: var(--font-mono);
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: var(--light-slate);
         }
 
         /* --- PUBLICATIONS LIST --- */
-        .pub-list { list-style: none; padding: 0; margin: 0; }
+        .pub-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
 
         .pub-item {
             display: grid;
             grid-template-columns: auto 1fr;
-            gap: 30px;
-            margin-bottom: 40px;
+            gap: 25px;
+            margin-bottom: 35px;
             align-items: baseline;
             transition: transform 0.2s;
         }
-        .pub-item:hover { transform: translateX(10px); }
+
+        .pub-item:hover {
+            transform: translateX(10px);
+        }
 
         .pub-year {
             font-family: var(--font-mono);
             color: var(--green);
-            font-size: 1.1rem;
-            min-width: 60px;
+            font-size: 1rem;
+            min-width: 50px;
         }
 
         .pub-content strong {
             color: var(--white);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
         }
 
         .pub-content em {
             color: var(--light-slate);
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-style: normal;
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 5px;
         }
 
         .pub-authors {
-            font-size: 1rem;
+            font-size: 0.9rem;
             font-family: var(--font-mono);
             color: var(--slate);
         }
 
         /* --- RESEARCH TABLE --- */
-        .table-responsive { overflow-x: auto; margin-top: 30px; }
-        
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
         .research-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 1.1rem;
+            font-size: 1rem; /* Aumentado */
             text-align: left;
         }
         .research-table th {
             color: var(--slate);
             font-family: var(--font-mono);
             font-weight: 400;
-            padding: 20px;
+            padding: 15px;
             border-bottom: 1px solid var(--lightest-navy);
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
         .research-table td {
-            padding: 20px;
+            padding: 15px;
             border-bottom: 1px solid var(--light-navy);
             color: var(--light-slate);
             vertical-align: top;
         }
-        .research-table tr:hover { background-color: var(--light-navy); }
-        .research-table .year { color: var(--green); font-family: var(--font-mono); width: 100px; }
-        .research-table .dept { color: var(--white); font-weight: 500; width: 250px; }
-        .research-table .pi { color: var(--slate); font-style: italic; font-size: 1rem; width: 250px; }
+        .research-table tr:hover {
+            background-color: var(--light-navy);
+        }
+        .research-table .year {
+            color: var(--green);
+            font-family: var(--font-mono);
+            width: 80px;
+        }
+        .research-table .dept {
+            color: var(--white);
+            font-weight: 500;
+            width: 200px;
+        }
+        .research-table .pi {
+            color: var(--slate);
+            font-style: italic;
+            font-size: 0.9rem;
+            width: 240px;
+        }
         
-        /* --- SIDEBAR --- */
+        /* --- FIXED SOCIALS --- */
         .side-element {
             width: 40px;
             position: fixed;
@@ -462,8 +503,6 @@
             background-color: var(--light-slate);
             margin-top: 20px;
         }
-        .social-list a { font-size: 1.3rem; }
-
         .email-side {
             display: flex;
             flex-direction: column;
@@ -471,7 +510,7 @@
         }
         .email-side a {
             font-family: var(--font-mono);
-            font-size: 1rem;
+            font-size: 0.8rem;
             writing-mode: vertical-rl;
             margin-bottom: 20px;
             letter-spacing: 0.1em;
@@ -484,34 +523,29 @@
             background-color: var(--light-slate);
         }
 
-        /* --- MENU MOVIL --- */
+        /* --- MENU MOVIL (NUEVO) --- */
         .menu-btn {
             display: none;
             cursor: pointer;
             color: var(--green);
-            font-size: 2rem;
+            font-size: 1.8rem;
             z-index: 200;
         }
 
         /* MOBILE QUERY */
         @media (max-width: 768px) {
             .side-element { display: none; }
-            .container { padding: 0 25px; max-width: 100%; } 
-            
-            body { font-size: 18px; } 
-            .hero h2 { font-size: 40px; }
-            .hero h3 { font-size: 30px; }
-            .hero p { font-size: 1.1rem; }
-            .edu-degree { font-size: 1.1rem; }
-            
+            .container { padding: 0 25px; max-width: 100%; } /* Reset en movil */
             .about-inner { display: block; }
             .project-item { display: block; margin-bottom: 50px;}
             .project-content { grid-column: 1 / -1; }
             .project-image { display: none; }
-            .project-description { background: transparent; padding: 0; box-shadow: none; font-size: 1rem;}
+            .project-description { background: transparent; padding: 0; box-shadow: none; }
             nav { padding: 20px; }
             
+            /* Ajustes Menú Móvil */
             .menu-btn { display: block; }
+            
             .nav-links {
                 display: flex;
                 position: fixed;
@@ -530,7 +564,8 @@
             .nav-links.active { right: 0; }
             .nav-links li { margin: 20px 0; font-size: 1.2rem; }
 
-            .research-table th, .research-table td { padding: 10px; font-size: 0.9rem; }
+            /* Ajustes Tabla Movil */
+            .research-table th, .research-table td { padding: 10px; font-size: 0.8rem; }
             .dept { width: auto; display: block; margin-bottom: 5px; color: var(--green);}
             .pi { width: auto; display: block; margin-top: 5px; color: var(--slate); }
             .research-table th { display: none; } 
@@ -636,14 +671,14 @@
                     </ul>
                 </div>
                 <div class="about-pic">
-                    <div style="position: relative; width: 100%; max-width: 350px;">
+                    <div style="position: relative; width: 100%; max-width: 300px;">
                         <img src="foto.png" alt="Cristóbal Vargas" class="profile-img">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="experience" class="container" style="max-width: 1200px;">
+        <section id="experience" class="container" style="max-width: 1000px;">
             <h2 class="section-heading">
                 <span>02.</span> Where I've Worked
             </h2>
@@ -685,7 +720,7 @@
             </h2>
 
             <div class="project-item">
-                <div class="project-content" style="grid-column: 1 / 9; text-align: left;">
+                <div class="project-content" style="grid-column: 1 / 8; text-align: left;">
                     <p class="project-overline">Ongoing Research</p>
                     <h3 class="project-title">ROP Screening Simulator</h3>
             
@@ -703,17 +738,17 @@
                     </ul>
                 </div>
             
-                <div class="project-image" style="grid-column: 8 / -1;">
+                <div class="project-image" style="grid-column: 6 / -1;">
                     <a href="#"> <img src="ROP.png" alt="ROP Screening Simulator Prototype"></a>
                 </div>
             </div>
 
             <div class="project-item" style="text-align: right;">
-                <div class="project-image" style="grid-column: 1 / 6;">
+                <div class="project-image" style="grid-column: 1 / 8;">
                     <img src="steatosis.png" alt="MRI Steatosis Scan">
                 </div>
 
-                <div class="project-content" style="grid-column: 5 / -1;">
+                <div class="project-content" style="grid-column: 6 / -1;">
                     <p class="project-overline">Ongoing Research</p>
                     <h3 class="project-title">MRI Hepatic Fat Grading</h3>
                     
@@ -733,7 +768,7 @@
             </div>
 
             <div class="project-item">
-                <div class="project-content" style="grid-column: 1 / 9; text-align: left;">
+                <div class="project-content" style="grid-column: 1 / 8; text-align: left;">
                     <p class="project-overline">Published Research</p>
                     <h3 class="project-title">Fundoscopy Phantom Model</h3>
                     
@@ -750,14 +785,14 @@
                     </ul>
                 </div>
 
-                <div class="project-image" style="grid-column: 8 / -1;">
+                <div class="project-image" style="grid-column: 6 / -1;">
                     <img src="plot.png" alt="Fundoscopy Validation Plot">
                 </div>
             </div>
             
         </section>
 
-        <section id="publications" class="container" style="max-width: 1300px;">
+        <section id="publications" class="container" style="max-width: 1200px;">
             <h2 class="section-heading">
                 <span>04.</span> Publications & Conferences
             </h2>
@@ -888,21 +923,21 @@
             </div>
         </section>
 
-        <section id="contact" class="container" style="text-align: center; max-width: 900px;">
+        <section id="contact" class="container" style="text-align: center; max-width: 800px;">
             <h2 class="section-heading" style="justify-content: center; margin-bottom: 20px;">
                 <span>06.</span> What's Next?
             </h2>
             
-            <h2 style="font-size: clamp(50px, 6vw, 80px); color: var(--white); margin-bottom: 25px;">Get In Touch</h2>
+            <h2 style="font-size: 50px; color: var(--white); margin-bottom: 20px;">Get In Touch</h2>
             
-            <p style="margin-bottom: 50px; font-size: 1.4rem;">
+            <p style="margin-bottom: 50px;">
                 I am currently open to research collaborations and residency opportunities. Whether you have a question or just want to say hi, my inbox is always open.
             </p>
             
             <a href="mailto:cavargas8@uc.cl" class="btn">Say Hello</a>
         </section>
         
-        <footer style="text-align: center; padding: 40px; font-family: var(--font-mono); font-size: 1rem; color: var(--light-slate);">
+        <footer style="text-align: center; padding: 20px; font-family: var(--font-mono); font-size: 0.8rem; color: var(--light-slate);">
             <p>Designed & Built by Cristóbal Vargas Sepúlveda</p>
         </footer>
 
@@ -913,10 +948,12 @@
         const navLinks = document.querySelector('.nav-links');
         const links = document.querySelectorAll('.nav-links li');
 
+        // Al hacer click en el icono, abre/cierra el menú
         menuBtn.addEventListener('click', () => {
             navLinks.classList.toggle('active');
         });
 
+        // Al hacer click en un enlace, cierra el menú automáticamente
         links.forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
