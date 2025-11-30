@@ -109,11 +109,10 @@
             grid-column: 1 / 8; 
             grid-row: 1 / -1; 
             z-index: 2;
-            /* Permite clic a través del texto */
-            pointer-events: none; 
+            pointer-events: none; /* Permite clic a través del contenedor transparente */
         }
         
-        /* Reactiva clics en elementos de texto */
+        /* Reactiva clics en textos */
         .project-content > * { pointer-events: auto; }
 
         .project-image { 
@@ -126,17 +125,42 @@
             overflow: hidden; 
             position: relative; 
             max-height: 500px;
-            cursor: default; /* Por defecto no muestra mano */
+            cursor: default; 
         }
         
         .project-image:hover { opacity: 1; }
         
-        /* Solo si es un enlace, muestra mano */
-        .project-image a { cursor: pointer; display: block; height: 100%; width: 100%; }
+        /* Solo si es un enlace (<a>), muestra mano */
+        .project-image a { cursor: pointer; display: block; height: 100%; width: 100%; position: relative;}
 
         .project-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; mix-blend-mode: multiply; filter: grayscale(100%) contrast(1); transition: all 0.3s; }
         .project-image:hover img { mix-blend-mode: normal; filter: none; }
         
+        /* ETIQUETA FLOTANTE "READ PAPER" */
+        .click-hint {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 20;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            color: var(--green);
+            background-color: rgba(10, 25, 47, 0.95);
+            padding: 8px 12px;
+            border: 1px solid var(--green);
+            border-radius: 4px;
+            pointer-events: none; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+        }
+        /* Efecto hover en etiqueta */
+        .project-image:hover .click-hint {
+            background-color: rgba(100, 255, 218, 0.1);
+            color: var(--white);
+        }
+
         .project-overline { color: var(--green); font-family: var(--font-mono); font-size: 1rem; margin-bottom: 10px; }
         .project-title { color: var(--white); font-size: 2.2rem; margin-bottom: 25px; }
         .project-description { background-color: var(--light-navy); color: var(--light-slate); padding: 30px; border-radius: 4px; font-size: 1.15rem; box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7); margin-bottom: 25px; }
@@ -194,7 +218,7 @@
             .section-heading::after { width: 100%; max-width: 100px; flex-grow: 1; }
 
             .project-item { display: block; margin-bottom: 50px;}
-            .project-content { grid-column: 1 / -1; pointer-events: auto; }
+            .project-content { grid-column: 1 / -1; pointer-events: auto; } /* Reset eventos en movil */
             .project-image { display: none; }
             .project-description { background: transparent; padding: 0; box-shadow: none; font-size: 1rem;}
             nav { padding: 20px; }
@@ -391,6 +415,7 @@
                 </div>
                 <div class="project-image" style="grid-column: 8 / -1;">
                     <a href="https://www.medigraphic.com/pdfs/simulacion/rsc-2024/rsc241c.pdf" target="_blank">
+                        <div class="click-hint">Read Paper ↗</div>
                         <img src="plot.png" alt="Fundoscopy Validation Plot">
                     </a>
                 </div>
