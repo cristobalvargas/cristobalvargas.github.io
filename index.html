@@ -85,81 +85,61 @@
         .about-inner { display: grid; grid-template-columns: 3fr 2fr; gap: 60px; }
         .profile-img { width: 100%; border-radius: 4px; filter: sepia(0.5); box-shadow: 20px 20px 0 0 var(--green); transition: all 0.3s; cursor: pointer; position: relative; z-index: 10; }
         .profile-img:hover { filter: none; box-shadow: 10px 10px 0 0 var(--green); transform: translate(-5px, -5px); }
-        .education-list { list-style: none; margin-bottom: 40px; border-left: 2px solid var(--lightest-navy); padding-left: 25px; }
-        .education-list li { margin-bottom: 25px; position: relative; }
-        .education-list li::before { content: "▹"; position: absolute; left: -32px; top: 5px; color: var(--green); font-size: 1rem; background: var(--navy); }
-        .edu-year { font-family: var(--font-mono); font-size: 1.1rem; color: var(--green); margin-bottom: 8px; display: inline-block; }
-        .edu-degree { display: block; color: var(--white); font-size: 1.4rem; font-weight: 600; margin-bottom: 5px; }
-        .edu-school { font-size: 1.2rem; color: var(--slate); }
+        
         .skills-list { display: grid; grid-template-columns: repeat(2, minmax(140px, 200px)); gap: 10px 20px; padding: 0; margin: 30px 0 0 0; list-style: none; }
         .skills-list li { position: relative; margin-bottom: 10px; padding-left: 25px; font-family: var(--font-mono); font-size: 1.1rem; }
         .skills-list li::before { content: "▹"; position: absolute; left: 0; color: var(--green); }
 
-        /* EXPERIENCE */
-        .job-card { margin-bottom: 35px; padding: 35px; background-color: var(--light-navy); border-radius: 4px; transition: transform 0.2s; }
-        .job-card:hover { transform: translateY(-5px); }
+        /* --- TARJETAS (EXPERIENCIA Y AHORA EDUCACIÓN) --- */
+        /* Compartimos estilos entre .job-card y .edu-card */
+        .job-card, .edu-card { 
+            margin-bottom: 20px; 
+            padding: 30px; 
+            border-radius: 10px; 
+            transition: all 0.25s cubic-bezier(0.645,0.045,0.355,1);
+            background-color: transparent; 
+            border: 1px solid transparent; 
+        }
+        
+        .job-card:hover, .edu-card:hover { 
+            background-color: rgba(17, 34, 64, 0.6); 
+            border: 1px solid rgba(100, 255, 218, 0.1); 
+            box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7);
+            backdrop-filter: blur(5px);
+            transform: translateY(-5px); 
+        }
+        
+        /* ESTILOS INTERNOS DE EXPERIENCIA */
         .job-header { display: flex; justify-content: space-between; margin-bottom: 15px; color: var(--white); font-weight: 500; font-size: 1.3rem; }
         .job-company { color: var(--green); }
         .job-date { font-family: var(--font-mono); font-size: 1rem; color: var(--light-slate); }
 
-        /* --- PROJECTS --- */
+        /* NUEVOS ESTILOS INTERNOS DE EDUCACIÓN */
+        .edu-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .edu-degree { color: var(--white); font-size: 1.2rem; font-weight: 600; }
+        .edu-year { font-family: var(--font-mono); font-size: 0.9rem; color: var(--green); }
+        .edu-school { color: var(--light-slate); font-size: 1rem; display: block; }
+
+        /* PROJECTS */
         .project-item { display: grid; grid-template-columns: repeat(12, 1fr); align-items: center; margin-bottom: 120px; }
-        
-        .project-content { 
-            grid-column: 1 / 8; 
-            grid-row: 1 / -1; 
-            z-index: 2;
-            pointer-events: none; 
-        }
-        
+        .project-content { grid-column: 1 / 8; grid-row: 1 / -1; z-index: 2; pointer-events: none; }
         .project-content > * { pointer-events: auto; }
-
-        .project-image { 
-            grid-row: 1 / -1; 
-            z-index: 1; 
-            border-radius: 4px; 
-            opacity: 0.6; 
-            transition: opacity 0.3s; 
-            align-self: center; 
-            overflow: hidden; 
-            position: relative; 
-            max-height: 500px;
-            cursor: default; 
-        }
-        
+        .project-image { grid-row: 1 / -1; z-index: 1; border-radius: 4px; opacity: 0.6; transition: opacity 0.3s; align-self: center; overflow: hidden; position: relative; max-height: 500px; cursor: default; }
         .project-image:hover { opacity: 1; }
-        
         .project-image a { cursor: pointer; display: block; height: 100%; width: 100%; position: relative;}
-
         .project-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; mix-blend-mode: multiply; filter: grayscale(100%) contrast(1); transition: all 0.3s; }
         .project-image:hover img { mix-blend-mode: normal; filter: none; }
         
-        /* ETIQUETA FLOTANTE "READ PAPER" (POSICIONADA ABAJO A LA IZQUIERDA) */
+        /* ETIQUETA "READ PAPER" */
         .click-hint {
-            position: absolute;
-            bottom: 20px; /* CAMBIO: Ahora abajo */
-            left: 20px;   /* A la izquierda */
-            z-index: 20;
-            font-family: var(--font-mono);
-            font-size: 0.8rem;
-            color: var(--green);
-            background-color: rgba(10, 25, 47, 0.95);
-            padding: 8px 12px;
-            border: 1px solid var(--green);
-            border-radius: 4px;
-            pointer-events: none; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s;
+            position: absolute; bottom: 20px; left: 20px; z-index: 20;
+            font-family: var(--font-mono); font-size: 0.8rem;
+            color: var(--green); background-color: rgba(10, 25, 47, 0.95);
+            padding: 8px 12px; border: 1px solid var(--green); border-radius: 4px;
+            pointer-events: none; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-transform: uppercase; letter-spacing: 1px; transition: all 0.3s;
         }
-        
-        /* EFECTO HOVER: SE MANTIENE VERDE (NO BLANCO) */
-        .project-image:hover .click-hint {
-            background-color: rgba(10, 25, 47, 1); /* Fondo oscuro sólido para leer bien */
-            color: var(--green); /* Mantiene el color verde para contraste */
-            border-color: var(--green);
-        }
+        .project-image:hover .click-hint { background-color: rgba(10, 25, 47, 1); color: var(--green); border-color: var(--green); }
 
         .project-overline { color: var(--green); font-family: var(--font-mono); font-size: 1rem; margin-bottom: 10px; }
         .project-title { color: var(--white); font-size: 2.2rem; margin-bottom: 25px; }
@@ -168,8 +148,14 @@
 
         /* PUBLICATIONS */
         .pub-list { list-style: none; padding: 0; margin: 0; }
-        .pub-item { display: grid; grid-template-columns: auto 1fr; gap: 30px; margin-bottom: 40px; align-items: baseline; transition: transform 0.2s; }
-        .pub-item:hover { transform: translateX(10px); }
+        .pub-item { 
+            display: grid; grid-template-columns: auto 1fr; gap: 30px; 
+            margin-bottom: 20px; padding: 20px; 
+            align-items: baseline; transition: all 0.25s; border-radius: 10px; border: 1px solid transparent; 
+        }
+        .pub-item:hover { 
+            background-color: rgba(17, 34, 64, 0.6); border: 1px solid rgba(100, 255, 218, 0.1); transform: translateX(10px); 
+        }
         .pub-year { font-family: var(--font-mono); color: var(--green); font-size: 1.1rem; min-width: 60px; }
         .pub-content strong { color: var(--white); font-size: 1.3rem; display: block; margin-bottom: 8px; }
         .pub-content em { color: var(--light-slate); font-size: 1.1rem; font-style: normal; display: block; margin-bottom: 8px; }
@@ -201,13 +187,7 @@
 
         /* EFECTO LINTERNA */
         .mouse-tracker {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none;
             background: radial-gradient(600px circle at var(--x, 50%) var(--y, 50%), rgba(100, 255, 218, 0.07) 0%, var(--navy) 80%);
             display: none;
         }
@@ -219,7 +199,7 @@
             .container { padding: 0 25px; max-width: 100%; } 
             body { font-size: 18px; } 
             
-            /* HERO MOBILE FIX */
+            /* HERO FIX */
             .hero { padding-top: 150px; padding-bottom: 40px; }
             .hero h2 { font-size: 40px; }
             .hero h3 { font-size: 30px; }
@@ -227,8 +207,6 @@
             
             .edu-degree { font-size: 1.1rem; }
             .about-inner { display: block; }
-
-            /* HEADER WRAPPING FIX */
             .section-heading::after { width: 100%; max-width: 100px; flex-grow: 1; }
 
             .project-item { display: block; margin-bottom: 50px;}
@@ -299,23 +277,31 @@
             <h2 class="section-heading"><span>01.</span> About Me</h2>
             <div class="about-inner">
                 <div class="about-text">
-                    <ul class="education-list">
-                        <li>
-                            <span class="edu-year">2025 - Present</span>
+                    
+                    <div class="edu-card">
+                        <div class="edu-header">
                             <span class="edu-degree">Clinical Clerkship (Final Year)</span>
-                            <span class="edu-school">Pontifical Catholic University of Chile</span>
-                        </li>
-                        <li>
-                            <span class="edu-year">2020 - 2025</span>
+                            <span class="edu-year">2025 - Present</span>
+                        </div>
+                        <span class="edu-school">Pontifical Catholic University of Chile</span>
+                    </div>
+
+                    <div class="edu-card">
+                        <div class="edu-header">
                             <span class="edu-degree">Medical School (MD Candidate)</span>
-                            <span class="edu-school">Pontifical Catholic University of Chile</span>
-                        </li>
-                        <li>
-                            <span class="edu-year">2017 - 2021</span>
+                            <span class="edu-year">2020 - 2025</span>
+                        </div>
+                        <span class="edu-school">Pontifical Catholic University of Chile</span>
+                    </div>
+
+                    <div class="edu-card">
+                        <div class="edu-header">
                             <span class="edu-degree">B.Sc. in Biomedical Engineering</span>
-                            <span class="edu-school">Pontifical Catholic University of Chile</span>
-                        </li>
-                    </ul>
+                            <span class="edu-year">2017 - 2021</span>
+                        </div>
+                        <span class="edu-school">Pontifical Catholic University of Chile</span>
+                    </div>
+
                     <p>
                         Hello! I first studied <strong>Biomedical Engineering</strong> out of a fascination for how things work. However, I wanted to apply that knowledge directly to patients, so I pursued my <strong>Medical Degree</strong>. I am now in my final year, with a strong interest in Radiology and Radiotherapy, as well as innovation and clinical simulation. I currently collaborate on the development of new simulation tools for neonatal ophthalmology.
                     </p>
@@ -504,7 +490,7 @@
                             <td class="year">2025</td>
                             <td class="dept">Radiotherapy</td>
                             <td>Tumor response and biomarkers in HCC treated with SBRT</td>
-                            <td class="pi">P. Muñoz-Schuffenegger, MD</td>
+                            <td class="pi">Muñoz-Schuffenegger, MD</td>
                         </tr>
                           <tr>
                             <td class="year">2024</td>
@@ -569,14 +555,12 @@
     </div>
 
     <script>
-        // Menu Movil
         const menuBtn = document.querySelector('.menu-btn');
         const navLinks = document.querySelector('.nav-links');
         const links = document.querySelectorAll('.nav-links li');
         menuBtn.addEventListener('click', () => { navLinks.classList.toggle('active'); });
         links.forEach(link => { link.addEventListener('click', () => { navLinks.classList.remove('active'); }); });
 
-        // Efecto Linterna
         const tracker = document.querySelector('.mouse-tracker');
         document.addEventListener('mousemove', (e) => {
             const x = e.clientX;
