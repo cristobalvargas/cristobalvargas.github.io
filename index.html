@@ -35,10 +35,10 @@
         .container { max-width: 1500px; margin: 0 auto; padding: 0 50px; }
         section { display: flex; flex-direction: column; justify-content: center; padding: 100px 0; }
         
-        /* ESTILOS HERO ESCRITORIO */
+        /* HERO */
         .hero { 
             min-height: auto; 
-            padding-top: 180px; /* Mantiene tu ajuste de escritorio */
+            padding-top: 180px; 
             padding-bottom: 40px; 
             justify-content: flex-start; 
         }
@@ -147,17 +147,14 @@
         /* MENU MOVIL */
         .menu-btn { display: none; cursor: pointer; color: var(--green); font-size: 2rem; z-index: 200; }
 
-        /* MOBILE QUERY (AQUÍ ESTÁN LOS ARREGLOS) */
+        /* MOBILE QUERY */
         @media (max-width: 768px) {
             .side-element { display: none; }
             .container { padding: 0 25px; max-width: 100%; } 
             body { font-size: 18px; } 
             
-            /* FIX HERO MOBILE: Padding suficiente para que no se corte el texto */
-            .hero { 
-                padding-top: 150px; /* Asegura que baje del navbar en móvil */
-                padding-bottom: 40px;
-            }
+            /* HERO MOBILE FIX */
+            .hero { padding-top: 150px; padding-bottom: 40px; }
             .hero h2 { font-size: 40px; }
             .hero h3 { font-size: 30px; }
             .hero p { font-size: 1.1rem; }
@@ -165,18 +162,15 @@
             .edu-degree { font-size: 1.1rem; }
             .about-inner { display: block; }
 
-            /* FIX HEADER WRAPPING: La línea se encoge para no romper el texto "Me" */
-            .section-heading::after {
-                width: 100%;
-                max-width: 100px; /* Limita el ancho de la línea en móvil */
-                flex-grow: 1;
-            }
+            /* HEADER WRAPPING FIX */
+            .section-heading::after { width: 100%; max-width: 100px; flex-grow: 1; }
 
             .project-item { display: block; margin-bottom: 50px;}
             .project-content { grid-column: 1 / -1; }
             .project-image { display: none; }
             .project-description { background: transparent; padding: 0; box-shadow: none; font-size: 1rem;}
             nav { padding: 20px; }
+            
             .menu-btn { display: block; }
             .nav-links { display: flex; position: fixed; top: 0; right: -100%; height: 100vh; width: 75vw; flex-direction: column; justify-content: center; align-items: center; background-color: var(--light-navy); transition: right 0.3s ease-in-out; z-index: 150; box-shadow: -10px 0px 30px -15px rgba(2,12,27,0.7); }
             .nav-links.active { right: 0; }
@@ -368,7 +362,9 @@
                     </ul>
                 </div>
                 <div class="project-image" style="grid-column: 8 / -1;">
-                    <img src="plot.png" alt="Fundoscopy Validation Plot">
+                    <a href="https://www.medigraphic.com/pdfs/simulacion/rsc-2024/rsc241c.pdf" target="_blank">
+                        <img src="plot.png" alt="Fundoscopy Validation Plot">
+                    </a>
                 </div>
             </div>
         </section>
