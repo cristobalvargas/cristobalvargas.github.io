@@ -35,14 +35,21 @@
         .container { max-width: 1500px; margin: 0 auto; padding: 0 50px; }
         section { display: flex; flex-direction: column; justify-content: center; padding: 100px 0; }
         
-        /* Ajuste de altura Hero y padding About */
-        .hero { min-height: 65vh; padding: 0; }
+        /* CORRECCIÓN HERO: Usar padding manual en vez de centrado automático */
+        .hero { 
+            min-height: auto; /* Se adapta al contenido */
+            padding-top: 180px; /* Empuja el texto debajo del navbar */
+            padding-bottom: 40px; /* Espacio pequeño abajo (lo que pediste) */
+            justify-content: flex-start; /* Alineación superior */
+        }
+        
+        /* CORRECCIÓN ABOUT: Sin padding extra arriba */
         #about { padding-top: 0; }
 
         /* NAVBAR */
         nav { 
             display: flex; 
-            justify-content: space-between; /* Esto empuja los extremos */
+            justify-content: space-between; 
             align-items: center; 
             padding: 20px 50px; 
             position: fixed; 
@@ -56,7 +63,6 @@
 
         .logo { color: var(--green); font-family: var(--font-mono); font-size: 1.4rem; border: 1px solid var(--green); padding: 5px 10px; border-radius: 4px; }
         
-        /* Enlaces de navegación (Desktop) */
         .nav-links { list-style: none; display: flex; gap: 25px; align-items: center; margin: 0; padding: 0; }
         .nav-links li { font-family: var(--font-mono); font-size: 1rem; }
         .nav-links a { color: var(--light-slate); }
@@ -65,7 +71,7 @@
         .resume-btn { border: 1px solid var(--green); color: var(--green) !important; padding: 10px 20px; border-radius: 4px; margin-left: 10px; }
         .resume-btn:hover { background-color: rgba(100, 255, 218, 0.1); }
 
-        /* TYPOGRAPHY & ELEMENTS */
+        /* TYPOGRAPHY */
         .hero h1 { color: var(--green); font-family: var(--font-mono); font-size: 1.2rem; font-weight: 400; margin-bottom: 20px; }
         .hero h2 { font-size: clamp(50px, 6vw, 80px); color: var(--white); font-weight: 600; line-height: 1.1; }
         .hero h3 { font-size: clamp(40px, 5vw, 70px); color: var(--slate); font-weight: 600; line-height: 1.1; margin-bottom: 30px; }
@@ -109,7 +115,7 @@
         .project-description { background-color: var(--light-navy); color: var(--light-slate); padding: 30px; border-radius: 4px; font-size: 1.15rem; box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7); margin-bottom: 25px; }
         .project-tech-list { display: flex; list-style: none; gap: 25px; font-family: var(--font-mono); font-size: 1rem; color: var(--light-slate); }
 
-        /* PUBLICATIONS LIST */
+        /* PUBLICATIONS */
         .pub-list { list-style: none; padding: 0; margin: 0; }
         .pub-item { display: grid; grid-template-columns: auto 1fr; gap: 30px; margin-bottom: 40px; align-items: baseline; transition: transform 0.2s; }
         .pub-item:hover { transform: translateX(10px); }
@@ -139,7 +145,7 @@
         .email-side a { font-family: var(--font-mono); font-size: 1rem; writing-mode: vertical-rl; margin-bottom: 20px; letter-spacing: 0.1em; }
         .email-side::after { content: ""; display: block; width: 1px; height: 90px; background-color: var(--light-slate); }
 
-        /* MENU MOVIL (CONFIGURACIÓN) */
+        /* MENU MOVIL */
         .menu-btn { display: none; cursor: pointer; color: var(--green); font-size: 2rem; z-index: 200; }
 
         /* MOBILE QUERY */
@@ -157,28 +163,10 @@
             .project-image { display: none; }
             .project-description { background: transparent; padding: 0; box-shadow: none; font-size: 1rem;}
             nav { padding: 20px; }
-            
-            /* Lógica Menú Móvil */
-            .menu-btn { display: block; } /* Visible en móvil */
-            .nav-links { 
-                display: flex; 
-                position: fixed; 
-                top: 0; 
-                right: -100%; /* Oculto a la derecha */
-                height: 100vh; 
-                width: 75vw; 
-                flex-direction: column; 
-                justify-content: center; 
-                align-items: center; 
-                background-color: var(--light-navy); 
-                transition: right 0.3s ease-in-out; 
-                z-index: 150; 
-                box-shadow: -10px 0px 30px -15px rgba(2,12,27,0.7); 
-            }
-            .nav-links.active { right: 0; } /* Visible al activar */
+            .menu-btn { display: block; }
+            .nav-links { display: flex; position: fixed; top: 0; right: -100%; height: 100vh; width: 75vw; flex-direction: column; justify-content: center; align-items: center; background-color: var(--light-navy); transition: right 0.3s ease-in-out; z-index: 150; box-shadow: -10px 0px 30px -15px rgba(2,12,27,0.7); }
+            .nav-links.active { right: 0; }
             .nav-links li { margin: 20px 0; font-size: 1.2rem; }
-            
-            /* Tablas */
             .research-table th, .research-table td { padding: 10px; font-size: 0.9rem; }
             .dept { width: auto; display: block; margin-bottom: 5px; color: var(--green);}
             .pi { width: auto; display: block; margin-top: 5px; color: var(--slate); }
@@ -193,7 +181,6 @@
 
     <nav>
         <a href="#" class="logo">CVS</a>
-        
         <ul class="nav-links">
             <li><a href="#about"><span>01.</span> About</a></li>
             <li><a href="#experience"><span>02.</span> Experience</a></li>
@@ -203,7 +190,6 @@
             <li><a href="#contact"><span>06.</span> Contact</a></li>
             <li><a href="cv.pdf" target="_blank" class="resume-btn">Resume</a></li>
         </ul>
-
         <div class="menu-btn"><i class="fas fa-bars"></i></div>
     </nav>
 
@@ -281,7 +267,6 @@
 
         <section id="experience" class="container" style="max-width: 1200px;">
             <h2 class="section-heading"><span>02.</span> Where I've Worked</h2>
-            
             <div class="job-card">
                 <div class="job-header">
                     <span class="job-title">Undergraduate Researcher @ <span class="job-company">School of Medicine</span></span>
@@ -289,7 +274,6 @@
                 </div>
                 <p>Conducting research in mechanisms of neuropathic pain and gastroenterology. Validating phantom models for clinical simulation.</p>
             </div>
-
             <div class="job-card">
                 <div class="job-header">
                     <span class="job-title">Academic Coordinator @ <span class="job-company">Biomedical Student Chapter</span></span>
@@ -297,7 +281,6 @@
                 </div>
                 <p>Led academic initiatives and coordination for the Institute for Biological and Medical Engineering.</p>
             </div>
-
             <div class="job-card">
                 <div class="job-header">
                     <span class="job-title">Teaching Assistant @ <span class="job-company">UC Chile</span></span>
@@ -309,7 +292,6 @@
 
         <section id="work" class="container">
             <h2 class="section-heading"><span>03.</span> Some Things I've Built</h2>
-
             <div class="project-item">
                 <div class="project-content" style="grid-column: 1 / 9; text-align: left;">
                     <p class="project-overline">Ongoing Research</p>
@@ -330,7 +312,6 @@
                     <a href="#"> <img src="ROP.png" alt="ROP Screening Simulator Prototype"></a>
                 </div>
             </div>
-
             <div class="project-item" style="text-align: right;">
                 <div class="project-image" style="grid-column: 1 / 6;">
                     <img src="steatosis.png" alt="MRI Steatosis Scan">
@@ -351,7 +332,6 @@
                     </ul>
                 </div>
             </div>
-
             <div class="project-item">
                 <div class="project-content" style="grid-column: 1 / 9; text-align: left;">
                     <p class="project-overline">Published Research</p>
@@ -371,7 +351,6 @@
                     <img src="plot.png" alt="Fundoscopy Validation Plot">
                 </div>
             </div>
-            
         </section>
 
         <section id="publications" class="container" style="max-width: 1300px;">
@@ -502,6 +481,7 @@
         <footer style="text-align: center; padding: 40px; font-family: var(--font-mono); font-size: 1rem; color: var(--light-slate);">
             <p>Designed & Built by Cristóbal Vargas Sepúlveda</p>
         </footer>
+
     </div>
 
     <script>
