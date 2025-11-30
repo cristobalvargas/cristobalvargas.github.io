@@ -35,10 +35,10 @@
         .container { max-width: 1500px; margin: 0 auto; padding: 0 50px; }
         section { display: flex; flex-direction: column; justify-content: center; padding: 100px 0; }
         
-        /* CORRECCIÓN HERO */
+        /* ESTILOS HERO ESCRITORIO */
         .hero { 
             min-height: auto; 
-            padding-top: 180px; 
+            padding-top: 180px; /* Mantiene tu ajuste de escritorio */
             padding-bottom: 40px; 
             justify-content: flex-start; 
         }
@@ -123,13 +123,8 @@
         .pub-content em { color: var(--light-slate); font-size: 1.1rem; font-style: normal; display: block; margin-bottom: 8px; }
         .pub-authors { font-size: 1rem; font-family: var(--font-mono); color: var(--slate); }
 
-        /* RESEARCH TABLE (AQUÍ ESTÁ EL CAMBIO) */
-        .table-responsive { 
-            overflow-x: auto; 
-            margin-top: 30px; 
-            margin-bottom: 100px; /* AGREGADO: Espacio extra abajo de la tabla */
-        }
-        
+        /* RESEARCH TABLE */
+        .table-responsive { overflow-x: auto; margin-top: 30px; margin-bottom: 100px; }
         .research-table { width: 100%; border-collapse: collapse; font-size: 1.1rem; text-align: left; }
         .research-table th { color: var(--slate); font-family: var(--font-mono); font-weight: 400; padding: 20px; border-bottom: 1px solid var(--lightest-navy); text-transform: uppercase; letter-spacing: 1px; font-size: 1rem; }
         .research-table td { padding: 20px; border-bottom: 1px solid var(--light-navy); color: var(--light-slate); vertical-align: top; }
@@ -152,16 +147,31 @@
         /* MENU MOVIL */
         .menu-btn { display: none; cursor: pointer; color: var(--green); font-size: 2rem; z-index: 200; }
 
-        /* MOBILE QUERY */
+        /* MOBILE QUERY (AQUÍ ESTÁN LOS ARREGLOS) */
         @media (max-width: 768px) {
             .side-element { display: none; }
             .container { padding: 0 25px; max-width: 100%; } 
             body { font-size: 18px; } 
+            
+            /* FIX HERO MOBILE: Padding suficiente para que no se corte el texto */
+            .hero { 
+                padding-top: 150px; /* Asegura que baje del navbar en móvil */
+                padding-bottom: 40px;
+            }
             .hero h2 { font-size: 40px; }
             .hero h3 { font-size: 30px; }
             .hero p { font-size: 1.1rem; }
+            
             .edu-degree { font-size: 1.1rem; }
             .about-inner { display: block; }
+
+            /* FIX HEADER WRAPPING: La línea se encoge para no romper el texto "Me" */
+            .section-heading::after {
+                width: 100%;
+                max-width: 100px; /* Limita el ancho de la línea en móvil */
+                flex-grow: 1;
+            }
+
             .project-item { display: block; margin-bottom: 50px;}
             .project-content { grid-column: 1 / -1; }
             .project-image { display: none; }
