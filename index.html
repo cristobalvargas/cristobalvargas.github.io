@@ -102,29 +102,41 @@
         .job-company { color: var(--green); }
         .job-date { font-family: var(--font-mono); font-size: 1rem; color: var(--light-slate); }
 
-        /* --- PROJECTS (CORREGIDO CLICS Y ENLACES) --- */
+        /* --- PROJECTS --- */
         .project-item { display: grid; grid-template-columns: repeat(12, 1fr); align-items: center; margin-bottom: 120px; }
         
         .project-content { 
             grid-column: 1 / 8; 
             grid-row: 1 / -1; 
             z-index: 2;
-            /* IMPORTANTE: Permite que el clic pase hacia la imagen si esta detrás */
+            /* Permite clic a través del texto */
             pointer-events: none; 
         }
         
-        /* Reactivamos los clics en el texto */
-        .project-content p, 
-        .project-content h3, 
-        .project-content ul, 
-        .project-content div {
-            pointer-events: auto;
-        }
+        /* Reactiva clics en elementos de texto */
+        .project-content > * { pointer-events: auto; }
 
-        .project-image { grid-row: 1 / -1; z-index: 1; border-radius: 4px; opacity: 0.6; transition: opacity 0.3s; align-self: center; overflow: hidden; position: relative; max-height: 500px; }
+        .project-image { 
+            grid-row: 1 / -1; 
+            z-index: 1; 
+            border-radius: 4px; 
+            opacity: 0.6; 
+            transition: opacity 0.3s; 
+            align-self: center; 
+            overflow: hidden; 
+            position: relative; 
+            max-height: 500px;
+            cursor: default; /* Por defecto no muestra mano */
+        }
+        
         .project-image:hover { opacity: 1; }
+        
+        /* Solo si es un enlace, muestra mano */
+        .project-image a { cursor: pointer; display: block; height: 100%; width: 100%; }
+
         .project-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; mix-blend-mode: multiply; filter: grayscale(100%) contrast(1); transition: all 0.3s; }
         .project-image:hover img { mix-blend-mode: normal; filter: none; }
+        
         .project-overline { color: var(--green); font-family: var(--font-mono); font-size: 1rem; margin-bottom: 10px; }
         .project-title { color: var(--white); font-size: 2.2rem; margin-bottom: 25px; }
         .project-description { background-color: var(--light-navy); color: var(--light-slate); padding: 30px; border-radius: 4px; font-size: 1.15rem; box-shadow: 0 10px 30px -15px rgba(2,12,27,0.7); margin-bottom: 25px; }
@@ -182,7 +194,7 @@
             .section-heading::after { width: 100%; max-width: 100px; flex-grow: 1; }
 
             .project-item { display: block; margin-bottom: 50px;}
-            .project-content { grid-column: 1 / -1; pointer-events: auto; } /* Reset eventos en movil */
+            .project-content { grid-column: 1 / -1; pointer-events: auto; }
             .project-image { display: none; }
             .project-description { background: transparent; padding: 0; box-shadow: none; font-size: 1rem;}
             nav { padding: 20px; }
