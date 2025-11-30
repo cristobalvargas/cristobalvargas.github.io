@@ -102,18 +102,18 @@
         .job-company { color: var(--green); }
         .job-date { font-family: var(--font-mono); font-size: 1rem; color: var(--light-slate); }
 
-        /* --- PROJECTS (CORREGIDO CLICS) --- */
+        /* --- PROJECTS (CORREGIDO CLICS Y ENLACES) --- */
         .project-item { display: grid; grid-template-columns: repeat(12, 1fr); align-items: center; margin-bottom: 120px; }
         
         .project-content { 
             grid-column: 1 / 8; 
             grid-row: 1 / -1; 
             z-index: 2;
-            /* IMPORTANTE: Permite que el clic pase a través del contenedor transparente hacia la imagen */
+            /* IMPORTANTE: Permite que el clic pase hacia la imagen si esta detrás */
             pointer-events: none; 
         }
         
-        /* IMPORTANTE: Reactivamos los clics en el texto */
+        /* Reactivamos los clics en el texto */
         .project-content p, 
         .project-content h3, 
         .project-content ul, 
@@ -182,7 +182,7 @@
             .section-heading::after { width: 100%; max-width: 100px; flex-grow: 1; }
 
             .project-item { display: block; margin-bottom: 50px;}
-            .project-content { grid-column: 1 / -1; pointer-events: auto; } /* En movil reseteamos pointer-events */
+            .project-content { grid-column: 1 / -1; pointer-events: auto; } /* Reset eventos en movil */
             .project-image { display: none; }
             .project-description { background: transparent; padding: 0; box-shadow: none; font-size: 1rem;}
             nav { padding: 20px; }
