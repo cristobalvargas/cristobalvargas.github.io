@@ -102,9 +102,25 @@
         .job-company { color: var(--green); }
         .job-date { font-family: var(--font-mono); font-size: 1rem; color: var(--light-slate); }
 
-        /* PROJECTS */
+        /* --- PROJECTS (CORREGIDO CLICS) --- */
         .project-item { display: grid; grid-template-columns: repeat(12, 1fr); align-items: center; margin-bottom: 120px; }
-        .project-content { grid-column: 1 / 8; grid-row: 1 / -1; z-index: 2; }
+        
+        .project-content { 
+            grid-column: 1 / 8; 
+            grid-row: 1 / -1; 
+            z-index: 2;
+            /* IMPORTANTE: Permite que el clic pase a través del contenedor transparente hacia la imagen */
+            pointer-events: none; 
+        }
+        
+        /* IMPORTANTE: Reactivamos los clics en el texto */
+        .project-content p, 
+        .project-content h3, 
+        .project-content ul, 
+        .project-content div {
+            pointer-events: auto;
+        }
+
         .project-image { grid-row: 1 / -1; z-index: 1; border-radius: 4px; opacity: 0.6; transition: opacity 0.3s; align-self: center; overflow: hidden; position: relative; max-height: 500px; }
         .project-image:hover { opacity: 1; }
         .project-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; mix-blend-mode: multiply; filter: grayscale(100%) contrast(1); transition: all 0.3s; }
@@ -166,7 +182,7 @@
             .section-heading::after { width: 100%; max-width: 100px; flex-grow: 1; }
 
             .project-item { display: block; margin-bottom: 50px;}
-            .project-content { grid-column: 1 / -1; }
+            .project-content { grid-column: 1 / -1; pointer-events: auto; } /* En movil reseteamos pointer-events */
             .project-image { display: none; }
             .project-description { background: transparent; padding: 0; box-shadow: none; font-size: 1rem;}
             nav { padding: 20px; }
@@ -321,7 +337,7 @@
                     </ul>
                 </div>
                 <div class="project-image" style="grid-column: 8 / -1;">
-                    <a href="#"> <img src="ROP.png" alt="ROP Screening Simulator Prototype"></a>
+                    <img src="ROP.png" alt="ROP Screening Simulator Prototype">
                 </div>
             </div>
 
