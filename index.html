@@ -27,12 +27,12 @@
         /* BASE */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
-        body { background-color: var(--navy); color: var(--slate); font-family: var(--font-sans); font-size: 22px; line-height: 1.6; }
+        body { background-color: var(--navy); color: var(--slate); font-family: var(--font-sans); font-size: 22px; line-height: 1.6; position: relative; }
         a { color: var(--green); text-decoration: none; position: relative; transition: all 0.25s; }
         a:hover { opacity: 0.8; }
 
         /* LAYOUT */
-        .container { max-width: 1500px; margin: 0 auto; padding: 0 50px; }
+        .container { max-width: 1500px; margin: 0 auto; padding: 0 50px; position: relative; z-index: 1; }
         section { display: flex; flex-direction: column; justify-content: center; padding: 100px 0; }
         
         /* HERO */
@@ -109,10 +109,9 @@
             grid-column: 1 / 8; 
             grid-row: 1 / -1; 
             z-index: 2;
-            pointer-events: none; /* Permite clic a través del contenedor transparente */
+            pointer-events: none; 
         }
         
-        /* Reactiva clics en textos */
         .project-content > * { pointer-events: auto; }
 
         .project-image { 
@@ -130,17 +129,16 @@
         
         .project-image:hover { opacity: 1; }
         
-        /* Solo si es un enlace (<a>), muestra mano */
         .project-image a { cursor: pointer; display: block; height: 100%; width: 100%; position: relative;}
 
         .project-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; mix-blend-mode: multiply; filter: grayscale(100%) contrast(1); transition: all 0.3s; }
         .project-image:hover img { mix-blend-mode: normal; filter: none; }
         
-        /* ETIQUETA FLOTANTE "READ PAPER" */
+        /* ETIQUETA FLOTANTE "READ PAPER" (POSICIONADA ABAJO A LA IZQUIERDA) */
         .click-hint {
             position: absolute;
-            top: 20px;
-            left: 20px;
+            bottom: 20px; /* CAMBIO: Ahora abajo */
+            left: 20px;   /* A la izquierda */
             z-index: 20;
             font-family: var(--font-mono);
             font-size: 0.8rem;
@@ -155,10 +153,12 @@
             letter-spacing: 1px;
             transition: all 0.3s;
         }
-        /* Efecto hover en etiqueta */
+        
+        /* EFECTO HOVER: SE MANTIENE VERDE (NO BLANCO) */
         .project-image:hover .click-hint {
-            background-color: rgba(100, 255, 218, 0.1);
-            color: var(--white);
+            background-color: rgba(10, 25, 47, 1); /* Fondo oscuro sólido para leer bien */
+            color: var(--green); /* Mantiene el color verde para contraste */
+            border-color: var(--green);
         }
 
         .project-overline { color: var(--green); font-family: var(--font-mono); font-size: 1rem; margin-bottom: 10px; }
@@ -199,6 +199,20 @@
         /* MENU MOVIL */
         .menu-btn { display: none; cursor: pointer; color: var(--green); font-size: 2rem; z-index: 200; }
 
+        /* EFECTO LINTERNA */
+        .mouse-tracker {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            background: radial-gradient(600px circle at var(--x, 50%) var(--y, 50%), rgba(100, 255, 218, 0.07) 0%, var(--navy) 80%);
+            display: none;
+        }
+        @media (min-width: 769px) { .mouse-tracker { display: block; } }
+
         /* MOBILE QUERY */
         @media (max-width: 768px) {
             .side-element { display: none; }
@@ -218,7 +232,7 @@
             .section-heading::after { width: 100%; max-width: 100px; flex-grow: 1; }
 
             .project-item { display: block; margin-bottom: 50px;}
-            .project-content { grid-column: 1 / -1; pointer-events: auto; } /* Reset eventos en movil */
+            .project-content { grid-column: 1 / -1; pointer-events: auto; }
             .project-image { display: none; }
             .project-description { background: transparent; padding: 0; box-shadow: none; font-size: 1rem;}
             nav { padding: 20px; }
@@ -238,6 +252,7 @@
     </style>
 </head>
 <body>
+    <div class="mouse-tracker"></div>
 
     <nav>
         <a href="#" class="logo">CVS</a>
@@ -554,11 +569,21 @@
     </div>
 
     <script>
+        // Menu Movil
         const menuBtn = document.querySelector('.menu-btn');
         const navLinks = document.querySelector('.nav-links');
         const links = document.querySelectorAll('.nav-links li');
         menuBtn.addEventListener('click', () => { navLinks.classList.toggle('active'); });
         links.forEach(link => { link.addEventListener('click', () => { navLinks.classList.remove('active'); }); });
+
+        // Efecto Linterna
+        const tracker = document.querySelector('.mouse-tracker');
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+            tracker.style.setProperty('--x', `${x}px`);
+            tracker.style.setProperty('--y', `${y}px`);
+        });
     </script>
 </body>
 </html>
