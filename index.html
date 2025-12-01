@@ -70,6 +70,10 @@
         .resume-btn { border: 1px solid var(--green); color: var(--green) !important; padding: 10px 20px; border-radius: 4px; margin-left: 10px; }
         .resume-btn:hover { background-color: rgba(100, 255, 218, 0.1); }
 
+        /* BOTON IDIOMA */
+        .lang-btn { font-family: var(--font-mono); font-size: 0.9rem; color: var(--slate); border: 1px solid transparent; padding: 5px 10px; border-radius: 4px; }
+        .lang-btn:hover { color: var(--green); border-color: var(--green); }
+
         /* TYPOGRAPHY */
         .hero h1 { color: var(--green); font-family: var(--font-mono); font-size: 1.2rem; font-weight: 400; margin-bottom: 20px; }
         .hero h2 { font-size: clamp(50px, 6vw, 80px); color: var(--white); font-weight: 600; line-height: 1.1; }
@@ -86,10 +90,9 @@
         .profile-img { width: 100%; border-radius: 4px; filter: sepia(0.5); box-shadow: 20px 20px 0 0 var(--green); transition: all 0.3s; cursor: pointer; position: relative; z-index: 10; }
         .profile-img:hover { filter: none; box-shadow: 10px 10px 0 0 var(--green); transform: translate(-5px, -5px); }
         
-        /* SKILLS (MODIFICADO PARA QUE NO SALTE DE LINEA) */
+        /* SKILLS */
         .skills-list { 
             display: grid; 
-            /* Antes estaba limitado a 200px, ahora usa fracciones iguales para expandirse */
             grid-template-columns: 1fr 1fr; 
             gap: 10px 20px; 
             padding: 0; 
@@ -103,13 +106,12 @@
             padding-left: 25px; 
             font-family: var(--font-mono); 
             font-size: 1.1rem; 
-            /* Esto fuerza a que el texto se mantenga en una sola linea */
             white-space: nowrap; 
         }
         
         .skills-list li::before { content: "▹"; position: absolute; left: 0; color: var(--green); }
 
-        /* --- TARJETAS --- */
+        /* CARDS */
         .job-card, .edu-card { 
             margin-bottom: 20px; 
             padding: 30px; 
@@ -146,7 +148,6 @@
         .project-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; mix-blend-mode: multiply; filter: grayscale(100%) contrast(1); transition: all 0.3s; }
         .project-image:hover img { mix-blend-mode: normal; filter: none; }
         
-        /* ETIQUETA "READ PAPER" */
         .click-hint {
             position: absolute; bottom: 20px; left: 20px; z-index: 20;
             font-family: var(--font-mono); font-size: 0.8rem;
@@ -258,7 +259,7 @@
             <li><a href="#research-list"><span>05.</span> Research</a></li>
             <li><a href="#contact"><span>06.</span> Contact</a></li>
             <li><a href="cv.pdf" target="_blank" class="resume-btn">Resume</a></li>
-            <li><a href="index_esp.html" style="font-family: var(--font-mono); font-size: 0.9rem; color: var(--slate); border: 1px solid transparent; padding: 5px 10px; border-radius: 4px;" onmouseover="this.style.color='#64ffda'" onmouseout="this.style.color='#8892b0'">🇪🇸 ES</a></li>
+            <li><a href="index_esp.html" class="lang-btn" title="Switch to Spanish">🇪🇸 ES</a></li>
         </ul>
         <div class="menu-btn"><i class="fas fa-bars"></i></div>
     </nav>
@@ -588,5 +589,3 @@
     </script>
 </body>
 </html>
-
-
